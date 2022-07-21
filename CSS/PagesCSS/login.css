@@ -1,0 +1,284 @@
+/* global changes */
+
+* {
+    font-family: Montserrat;
+    box-sizing: border-box;
+    font-weight: 400;
+    letter-spacing: 1px;
+    overflow:hidden;
+    
+}
+main , footer {
+    top: 0px;
+}
+
+h2 {
+    font-family: Futura;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+/* === LOGIN STYLING START === */
+
+/* Styling the background image and adding blur and reduced brightness for ease of reading */
+.BackgroundImage {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-image: url(../../Images/BestBandPictures/fullband.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(3px) brightness(50%);
+    
+    
+    
+}
+
+/* Setting overall size of login container */
+.LoginContainer, .SignupContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    font-size: 30px;
+    top: 20%;
+    left: 18%;
+}
+
+.SignupContainer {
+    top: 11.5%;
+}
+
+/* Google logo styling */
+
+.LoginWithGoogle, .SignupWithGoogle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.GoogleIcon {
+    width: 25px;
+    float: left;
+}
+
+/* Styling of Sign in with google text */
+.GoogleSignInText, .GoogleSignupText {
+    font-size: 15px;
+    position: relative;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: right;
+    padding: 5px;
+    margin-left: 5px;
+    color: #ffffff78;
+    transition: 0.3s ease;
+}
+
+/* Styling of actual login button */
+.GoogleLoginButton, .GoogleSignupButton {
+    border: 1px solid #ffffff78;
+    padding: 5px 5px 5px 10px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    transition: 0.3s ease;
+}
+
+/* Hover transition for login button and login text */
+.GoogleLoginButton:hover, .GoogleSignupButton:hover {
+    border: 1px solid #fff;
+}
+
+.GoogleSignInText:hover, .GoogleSignupText:hover {
+    color: #fff;
+}
+
+/* Styling of email login divider */
+.EmailLogin, .EmailSignup {
+    text-transform: capitalize;
+    font-size: 15px;
+    padding: 10px 61px;
+    margin: 15px 0;
+    border-bottom: 1px solid #4F6779;
+    border-top: 1px solid #4F6779;
+    color: rgba(255, 255, 255, 0.366);
+    
+}
+
+.EmailSignup {
+    padding: 10px 50px;
+}
+
+
+/* Creating the box where all the login elemts go in */
+.LoginBox, .SignupBox {
+    z-index: 99;
+    background: #18181e;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.168);
+    width: 400px;
+    padding: 50px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+/* Hover animations for the login box */
+.LoginBox:hover, .SignupBox:hover {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.24);
+}
+
+/* Setting styling for the login text at the top */
+.LoginBox h2, .SignupBox h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+/* Styling for the fields where the user inputs data */
+.LoginBox .Input, .SignupBox .Input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 3px solid #fff;
+    margin-bottom: 20px;
+}
+
+/* Removing the styling from the input boxes, also making them stretch the entire way */
+.LoginBox .Input input, .SignupBox .Input input {
+    border: none;
+    outline: none;
+    background: none;
+    width: 100%;
+    padding-bottom: 5px;
+}
+
+
+
+/* Styling the icons, spacing them from the text */
+.LoginBox .Input i, .SignupBox .Input i{
+    margin-right: 10px;
+    padding-bottom: 5px;
+}
+
+/* Changing font size of the placeholder */
+.LoginBox .Input ::placeholder, .SignUpBox .Input ::placeholder{
+    font-size: 15px;
+
+}
+
+/* Letting the show password button change to a pointer so user can see it is clickable */
+.ShowPasswordButton {
+    cursor: pointer;
+    
+}
+
+/* When hovered over, the show password button turns light blue */
+.ShowPasswordButton i:hover {
+    color: #beeff6;
+    transition: 0.3s ease;
+}
+/* Changing the styling of the submit button */
+.SubmitButton {
+    cursor: pointer;
+    font-family: Futura;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 15px;
+    background: #fff;
+    color: #4F6779;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 120px;
+    padding: 10px 25px;
+    margin-top: 20px;
+    transition: 0.3s ease;
+
+}
+
+.SubmitButton:hover {
+    background-color: #beeff6;
+}
+
+/* Changing styling of the sign up prompt */
+.SignupPrompt, .LoginPrompt {
+    z-index: 8;
+    background: #18181e;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.168);
+    width: 300px;
+    padding: 30px;
+    border-radius: 10px;
+    margin: 0px 50px;
+    transition: 0.5s;
+
+
+}
+
+.SignupPromptText, .LoginPromptText {
+    font-size: 15px;
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SignupPrompt span, .LoginPrompt span {
+    color: #beeff6;
+    font-family: Futura;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SignupPrompt span:hover, .LoginPrompt span:hover {
+    color: #fff;
+}
+
+/* Translate is needed as if just .hide is included then everything disappears at different rates, so it is used to look smooth as well as form as a transition */
+
+
+.SignupContainer.hide {
+    transform: translate(-200%);
+    visibility: hidden;
+    transition: 1s ease;
+}
+
+.SignupContainer.hide .LoginPrompt {
+    transform: translate(200%);
+    visibility: hidden;
+
+}
+
+.LoginContainer.hide {
+    transform: translate(200%);
+    visibility: hidden;
+    transition: 1s ease;
+}
+
+.LoginContainer.hide .SignupPrompt {
+    transform: translate(-200%);
+    visibility: hidden;
+}
+
+
+/* === LOGIN STYLING END === */
+
+
+/* === ERROR HANDLING START === */
+
+
+
+/* === ERROR HANDLING END === */

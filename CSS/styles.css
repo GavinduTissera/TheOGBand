@@ -1,0 +1,313 @@
+/* === FONTS === */
+    @font-face {
+        font-family: MontLight;
+        src: url(../Fonts/Mont/Mont-ExtraLightDEMO.otf);
+    }
+
+    @font-face {
+        font-family: MontHeavy;
+        src: url(../Fonts/Mont/Mont-HeavyDEMO.otf);
+    }
+
+    @font-face {
+        font-family: Futura;
+        src: url(../Fonts/Futura/Futura\ Std\ Book.ttf);
+    }
+
+    @font-face {
+        font-family: FuturaBold;
+        src: url(../Fonts/Futura/Futura\ Bold.ttf);
+    }
+
+/* === Main document styling === */
+
+    * {
+        font-family: MontLight;
+        scroll-behavior: smooth;
+        background-color: #26262f;
+        color: #fff;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;   
+        
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #b6b5c5;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #2b3943;
+        border-radius: 50px;
+        
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #1c1c23;
+    }
+
+    ::-webkit-scrollbar-track:hover {
+        background: #9d9ca8;
+    }
+
+    main , footer {
+        top: 65px;
+    }
+
+    .header {
+        font-size: 40px;
+        color: #fff;
+        font-family: MontHeavy;
+        display: flex;
+        justify-content: center;
+        margin: 5px auto;
+    }
+
+/* === NAVIGATION SECTION === */
+
+    header {
+        box-sizing: border-box;
+        z-index: 99;
+        position: sticky;
+        width: 100%;
+        height: 65px;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        background: #26262f;
+        transition: 0.3s ease;
+    }
+
+    header.sticky {
+        height: 65px;
+        background-color: #ffffff25;
+        backdrop-filter: blur(15px);
+    }
+
+    header .NavBar {
+        position: relative;
+        width: 100%;
+        height: 65px;
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        padding: 0 50px;
+        transition: 0.5s ease-in-out;
+
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+
+
+    li {
+        float: left;
+        padding: 20px;
+    }
+
+    .NavBarHome, .NavBarTour, .NavBarLoginSignup, .NavBarAbout, .NavBarAdminDashboard, .NavBarLogout, .NavBarProfile .LogoNavBar {
+        display: block;
+        text-align: center;
+        font-family: Futura;
+        letter-spacing: 1px;
+        font-size: 20px;
+        color: #fff;
+        transition: 0.5s;
+        text-shadow: 0 3px 20px rgba(4, 4, 4, 0.603);
+
+    }
+
+    .LogoNavBar {
+        font-size: 25px;
+        padding: 20px;
+        font-family: MontHeavy;
+    }
+
+/* === NAVIGATION SECTION END === */
+
+/* === LOGO STYLING START === */
+
+    h1 {
+        font-family: MontHeavy;
+        font-size: 100px;
+        text-transform: uppercase;
+    }
+
+/* === LOGO STYLING END === */
+
+/* === ABOUT US SECTION  === */
+
+    .BandImage {
+        background-image: url(../Images/BestBandPictures/BandBackground.png);
+    }
+
+/* === ABOUT US SECTION END === */
+
+
+/* === GALLERY SECTION === */
+
+
+
+    /* Setting widths and heights of the carousel */
+    .carousel{
+        width: 1000px;
+        height: 500px;
+        margin: auto;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    /* Setting traits of the 5 buttons */
+    .-button{
+        position: absolute;
+        z-index: 2;
+        background: none;
+        border: none;
+        color: #4F6779;
+        font-size: 40px;
+        cursor: pointer;
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        transition: 0.5s;
+        margin-top: 15%;
+    }
+
+    /* hover animations for the buttons */
+    .-button:hover{
+        color: #c9e7eb;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Spacing the buttons out */
+    .prev{
+        left: 150px;
+    }
+
+    .next {
+        right: 150px
+    }
+
+    /* Making sure the slides are directly next to each other */
+    .radioandslides {
+        width: 500%;
+        height: 500px;
+        display: flex;
+    }
+
+    /* Making sure the original radio buttons don't show */
+    .radioandslides input{
+        display: none;
+    }
+
+    /* Setting traits of the slides */
+    .slide {
+        width: 20%;
+        transition: 2s;
+    }
+
+    .slide img{
+        width: 1000px;
+    }
+
+    /* Creating the manual navigation */
+
+    .ManualNavigation {
+        position: absolute;
+        width: 1000px;
+        margin-top: -40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Setting traits of the radio buttons on the bottom */
+    .Manualbtn {
+        border: 3px solid #4F6779;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: 0.5s;
+    }
+
+    /* Spacing the radio buttons out */
+    .Manualbtn:not(:last-child) {
+        margin-right: 30px;
+    }
+
+    /* Setting hover animations for the radio buttons (filling them in) */
+    .Manualbtn:hover {
+        background: #4F6779;
+    }
+
+    /* If the radio buttons are checked, then it moves right until it reaches the desired image */
+    #radio1:checked ~ .first {
+        margin-left: 0;
+    }
+
+    #radio2:checked ~ .first {
+        margin-left: -20%;
+    }
+
+    #radio3:checked ~ .first {
+        margin-left: -40%;
+    }
+
+    #radio4:checked ~ .first {
+        margin-left: -60%;
+    }
+
+    #radio5:checked ~ .first {
+        margin-left: -80%;
+    }
+
+    /*  */
+    .AutoNavigation {
+        position: absolute;
+        display: flex;
+        width: 1000px;
+        justify-content: center;
+        margin-top: 460px;
+    }
+
+    .AutoNavigation div{
+        border: 3px solid #4F6779;
+        padding: 5px;
+        border-radius: 10px;
+        transition: 1s;
+    }
+
+    .AutoNavigation div:not(:last-child) {
+        margin-right: 30px;
+    }
+
+    #radio1:checked ~ .AutoNavigation .Autobtn1 {
+        background: #4F6779
+    }
+
+    #radio2:checked ~ .AutoNavigation .Autobtn2 {
+        background: #4F6779
+    }
+
+    #radio3:checked ~ .AutoNavigation .Autobtn3 {
+        background: #4F6779
+    }
+
+    #radio4:checked ~ .AutoNavigation .Autobtn4 {
+        background: #4F6779
+    }
+
+    #radio5:checked ~ .AutoNavigation .Autobtn5 {
+        background: #4F6779
+    }
+
+    /* === GALLERY SECTION END === */
+
+
+    /* === FOOTER SECTION START === */
+
+    footer {
+        background-color: rgb(22, 22, 22);
+    }
