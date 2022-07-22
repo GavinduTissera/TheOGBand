@@ -33,6 +33,7 @@
                 <!-- If user is admin, then they get access to the dashboard when they are logged in-->
                 <?php
                     if (isset($_SESSION["userid"])) {
+                        echo "userid";
                         if($_SESSION["userisadmin"]) {
                 ?>
                             <li><a class="NavBarAdminDashboard" href="Pages/Admin/Dashboard.php">DASHBOARD</a></li>
