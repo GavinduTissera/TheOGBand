@@ -1,5 +1,4 @@
 <?php
-namespace LoginAndSignup;
 include "ini.php";
 
 
@@ -8,15 +7,16 @@ class LoginQuery extends dbConnector
 {
 //Next 2 functions create queries that access the database and return them. These queries are used to stop SQL injection by utilising placeholders "?"
 
-    protected function GetAllDataQuery()
+    protected function GetAllDataQuery($email)
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT * FROM users WHERE userEmail = ?;");
+        $queryStatement->bindParam(1,$email);
         return $queryStatement;
     }
 
     protected function GetAssocArray($queryStatement)
     {
-        $temp = $queryStatement->fetchAll(\PDO::FETCH_ASSOC);
+        $temp = $queryStatement->fetchAll(PDO::FETCH_ASSOC);
         return $temp;
     }
 
@@ -24,10 +24,10 @@ class LoginQuery extends dbConnector
     //Next 2 functions return error messages if the database doesnt excecute the queries properly
     protected function CheckifExcecutableQuery($email)
     {    
-        $queryStatement = $this->GetAllDataQuery();
-        if (!$queryStatement->execute([$email])) {
+        $queryStatement = $this->GetAllDataQuery($email);
+        if (!$queryStatement->execute()) {
             $queryStatement = null;
-            header("location: ../Pages/login.php?error=failedToExcecute");
+            header("location: ../../Pages/login.php?error=failedToExcecute");
             exit();
         } 
         $queryStatement = null;
@@ -38,7 +38,7 @@ class LoginQuery extends dbConnector
 
     protected function CheckPassword($email, $password)
     {
-        $queryStatement = $this->GetAllDataQuery();
+        $queryStatement = $this->GetAllDataQuery($email);
         $queryStatement->execute([$email]);
         $hashedPassword = $this->GetAssocArray($queryStatement);
         $boolPasswordCheck = password_verify($password, $hashedPassword[0]["userPassword"]);
@@ -48,22 +48,27 @@ class LoginQuery extends dbConnector
 
     protected function getUserFromDB($email, $password)
     {
-        $queryStatement = $this->GetAllDataQuery();
+        $queryStatement = $this->GetAllDataQuery($email);
+        $queryStatement->execute([$email]);
         $this->CheckifExcecutableQuery($email);
         $passwordCheck = $this->CheckPassword($email, $password);
         if ($passwordCheck === false) {
             $queryStatement = null;
-            header("location: ../Pages/login.php?error=incorrectPassword");
+            header("location: ../../Pages/login.php?error=incorrectPassword");
             exit();
-        } elseif ($passwordCheck === true) {
-            $userArray = $this->GetAssocArray($queryStatement);
-            session_start();
-            $_SESSION["userid"] = $userArray[0]["userID"];
-            $_SESSION["useremail"] = $userArray[0]["userEmail"];
-            $_SESSION["userfirstname"] = $userArray[0]["userFirstName"];
-            $_SESSION["userpassword"] = $userArray[0]["userPassword"];
-            $_SESSION["userisadmin"] = $userArray[0]["userIsAdmin"];
         }
+        $userArray = $this->GetAssocArray($queryStatement);
+        session_start();
+        $_SESSION["userarray"] = $userArray;
+        $_SESSION["userid"] = $userArray[0]["userID"];
+        $_SESSION["useremail"] = $userArray[0]["userEmail"];
+        $_SESSION["userfirstname"] = $userArray[0]["userFirstName"];
+        $_SESSION["userpassword"] = $userArray[0]["userPassword"];
+        $_SESSION["userisadmin"] = $userArray[0]["userIsAdmin"];
+        var_dump($_SESSION);
+        $queryStatement = null;
+
+        
 
     }
 }
@@ -73,8 +78,8 @@ class LoginQuery extends dbConnector
 //This is the class that takes in the data and then does some error handling. If it passes everything, it adds the user to the database
 class LoginController extends LoginQuery {
     //Initialising attributes
-    private $email;
-    private $password;
+    var $email;
+    var $password;
 
     //Constructor for signup controller
     public function __construct($email, $password)
@@ -85,8 +90,8 @@ class LoginController extends LoginQuery {
 
     protected function ExistingAccount()
     {
-        $queryStatement = $this->GetAllDataQuery();
-        $queryStatement->execute([$this->email]);
+        $queryStatement = $this->GetAllDataQuery($this->email);
+        $queryStatement->execute();
         $this->CheckifExcecutableQuery($this->email);
         if ($queryStatement->rowCount() === 0) {
             return false;
@@ -98,7 +103,7 @@ class LoginController extends LoginQuery {
     public function errorHandlingAndLogin()
     {
         if ($this->ExistingAccount() === false) {
-            header("location: ../Pages/login.php?error=userNotExists");
+            header("location: ../../Pages/login.php?error=userNotExists");
             exit();
         }
         $this->getUserFromDB($this->email, $this->password);

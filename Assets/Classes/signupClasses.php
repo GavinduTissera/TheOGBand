@@ -1,6 +1,6 @@
 <?php
-namespace LoginAndSignup;
 include "ini.php";
+
 //Inherited from the db connector class. This class focuses on interacting with the database
 class SignupQuery extends dbConnector
 {
@@ -37,11 +37,11 @@ class SignupQuery extends dbConnector
         } catch (\PDOException $exception) {    
             if ($exception->errorInfo[1] === 1062) {
                 $queryStatement = null;
-                header("location: ../Pages/login.php?error=userAlreadyExists");
+                header("location: ../../Pages/login.php?error=userAlreadyExists");
                 exit();
             }
             $queryStatement = null;
-            header("location: ../Pages/login.php?error=failedToExcecute");
+            header("location: ../../Pages/login.php?error=failedToExcecute");
             exit();
         }
         $queryStatement = null;
@@ -52,11 +52,11 @@ class SignupQuery extends dbConnector
 //This is the class that takes in the data and then does some extra error handling. If it passes everything, it adds the user to the database
 class SignupController extends SignupQuery {
     //Initialising attributes
-    private $email;
-    private $firstname;
-    private $password;
-    private $repeatPassword;
-    private $isAdmin;
+    var $email;
+    var $firstname;
+    var $password;
+    var $repeatPassword;
+    var $isAdmin;
 
     //Constructor for signup controller
     public function __construct($email, $firstname, $password, $repeatPassword, $isAdmin)
@@ -82,12 +82,19 @@ class SignupController extends SignupQuery {
     public function errorHandlingAndSignup()
     {
         if ($this->passwordMatchCheck() === false) {
-            header("location: ../Pages/login.php?error=passwordsDontMatch");
+            header("location: ../../Pages/login.php?error=passwordsDontMatch");
             exit();
         } 
+
+        if (strlen(trim($this->password) < 6)) {
+            header("location: ../../Pages/login.php?error=passwordsLengthError");
+            exit();
+        }
         $this->addUserToDB($this->email, $this->firstname, $this->password, $this->isAdmin); 
-        $queryStatement = $this->GetAllDataQuery();
+        $queryStatement = $this->GetAllDataQuery($this->email);
+        $queryStatement->execute([$this->email]);
         $userArray = $this->GetAssocArray($queryStatement);
+        
         session_start();
         $_SESSION["userid"] = $userArray[0]["userID"];
         echo "userid";

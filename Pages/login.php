@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +54,7 @@ session_start();
                         
                         <p class="EmailLogin">Or Login with E-Mail</p>
                     </div>
-                    <form action="../Includes/loginInc.php" method="post">
+                    <form action="../Assets/Includes/loginInc.php" method="post">
                         <div class="Input Email">
                             <i class="uil uil-envelope-alt"></i>
                             <input type="email" name="email" placeholder="E-Mail" required>
@@ -97,7 +95,7 @@ session_start();
                         
                         <p class="EmailSignup">Or Sign up with E-Mail</p>
                     </div>
-                    <form action="../Includes/signupInc.php" method="post">
+                    <form action="../Assets/Includes/signupInc.php" method="post">
                         <div class="Input Email">
                             <i class="uil uil-envelope-alt"></i>
                             <input type="email" name="email" placeholder="E-Mail" required>

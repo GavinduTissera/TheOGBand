@@ -109,10 +109,9 @@
         padding: 20px;
     }
 
-    .NavBarHome, .NavBarTour, .NavBarLoginSignup, .NavBarAbout, .NavBarAdminDashboard, .NavBarLogout, .NavBarProfile, .LogoNavBar {
+    .NavBarHome, .NavBarTour, .NavBarLoginSignup, .NavBarAbout, .NavBarAdminDashboard, .NavBarLogout, .NavBarProfile .LogoNavBar {
         display: block;
         text-align: center;
-        text-transform: uppercase;
         font-family: Futura;
         letter-spacing: 1px;
         font-size: 20px;

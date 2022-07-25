@@ -1,17 +1,12 @@
-<?php
-    include "Assets/Classes/dbConnectorClasses.php";
-    session_start()
-?>
-
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0042)http://localhost:3000/index.php?error=none -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/reset.css">
-    <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="./The OG Band_files/reset.css">
+    <link rel="stylesheet" href="./The OG Band_files/styles.css">
+    <link rel="stylesheet" href="./The OG Band_files/line.css">
     <!-- === Link to javascript === -->
     
     <!--Document title-->
@@ -24,36 +19,15 @@
     <header>
         <nav class="NavBar">
             <!--Text that goes to home screen when clicked-->
-            <a class="LogoNavBar" href="index.php#TopOfPage">THE OG BAND</a>
+            <a class="LogoNavBar" href="http://localhost:3000/index.php#TopOfPage">THE OG BAND</a>
             <ul class="NavBarList">
                 <!--Options that form the navigation bar-->
-                <li><a class="NavBarHome" href="index.php#TopOfPage">HOME</a></li>
-                <li><a class="NavBarAbout" href="index.php#AboutUsSection">ABOUT</a></li>
-                <li><a class="NavBarTour" href="Pages/tour.php">BOOK TICKETS</a></li>
+                <li><a class="NavBarHome" href="http://localhost:3000/index.php#TopOfPage">HOME</a></li>
+                <li><a class="NavBarAbout" href="http://localhost:3000/index.php#AboutUsSection">ABOUT</a></li>
+                <li><a class="NavBarTour" href="http://localhost:3000/Pages/tour.php">BOOK TICKETS</a></li>
                 <!-- === CONTENT THAT CHANGES DEPENDENT ON LOGIN STATUS === -->
                 <!-- If user is admin, then they get access to the dashboard when they are logged in-->
-                <?php
-                    if (isset($_SESSION["userid"])) {
-                        if($_SESSION["userisadmin"] === 1) {
-                            echo "<li><a class='NavBarAdminDashboard' href='Pages/Admin/Dashboard.php'>DASHBOARD</a></li>";
-                        }
-                        /* If user is not an  admin, then they get access to logout and profile but not dashboard */
-                        echo "<li><a class='NavBarLogout' href='Assets/Includes/logoutInc.php' >LOGOUT</a></li>";
-                        ?>
-                        
-                        <li><a class='NavBarProfile' href='index.php'>
-                            <?php
-                            echo $_SESSION["userfirstname"];
-                            ?>
-                        </a></li>
-                <?php
-                /* If user is not logged in, they get login and signup */
-                    } else {      
-
-                        echo "<li><a class='NavBarLoginSignup' href='Pages/login.php'>LOGIN&SIGNUP</a></li>";
-                    }
-                ?>
-            </ul>
+                <li><a class="NavBarLogout" href="http://localhost:3000/Includes/logoutInc.php">LOGOUT</a></li><li><a class="NavBarProfile" href="http://localhost:3000/index.php?error=none"></a></li>            </ul>
         </nav>
         <hr>
     </header>
@@ -68,8 +42,8 @@
         </div>
         
         <!--Image that is beneath the book tickets button-->
-        <img src="Images/chalkboardbackground.jpg" alt="">
-        <img src="Images/BandBackground.png" alt="The OG Band photo">
+        <img src="./The OG Band_files/chalkboardbackground.jpg" alt="">
+        <img src="./The OG Band_files/BandBackground.png" alt="The OG Band photo">
         <!--Text that appears beside the book tickets button-->
         <h2>SEE US LIVE</h2>
         <button type="button" class="bookTickets">
@@ -110,8 +84,8 @@
             <div class="carousel">   
                 <div class="radioandslides">
                     <!--Left and right buttons-->  
-                    <button onclick="DecrementCounter()" class="prev -button" id="prev-button">&#10229;</button>
-                    <button onclick="IncrementCounter()" class="next -button" id="next-button">&#10230;</button>
+                    <button onclick="DecrementCounter()" class="prev -button" id="prev-button">⟵</button>
+                    <button onclick="IncrementCounter()" class="next -button" id="next-button">⟶</button>
                     <!--Radio Buttons-->
                     <input type="radio" name="radioselectors" id="radio1">
                     <input type="radio" name="radioselectors" id="radio2">
@@ -120,19 +94,19 @@
                     <input type="radio" name="radioselectors" id="radio5">
                     <!--Pictures in the gallery-->
                     <div class="slide first">
-                        <img src="Images/BestBandPictures/basscloseup.png" alt="">
+                        <img src="./The OG Band_files/basscloseup.png" alt="">
                     </div>
                     <div class="slide">
-                        <img src="Images/BestBandPictures/fullband.png" alt="">
+                        <img src="./The OG Band_files/fullband.png" alt="">
                     </div>
                     <div class="slide">
-                        <img src="Images/BestBandPictures/fullbandotherside.png" alt="">
+                        <img src="./The OG Band_files/fullbandotherside.png" alt="">
                     </div>
                     <div class="slide">
-                        <img src="Images/BestBandPictures/jasvirdrums2.png" alt="">
+                        <img src="./The OG Band_files/jasvirdrums2.png" alt="">
                     </div>
                     <div class="slide">
-                        <img src="Images/BestBandPictures/singers2.png" alt="">
+                        <img src="./The OG Band_files/singers2.png" alt="">
                     </div>
                     <!--Auto Navigation-->
                     <div class="AutoNavigation">
@@ -173,12 +147,12 @@
 
 
     <footer>
-        <img src="Images/Icons/brand-twitter.ico" alt="twitter OG Band">
-        <img src="Images/Icons/brand-instagram.ico" alt="instagram OG Band">
-        <img src="Images/Icons/brand-youtube.ico" alt="youtube OG Band">
-        <button><a href="#TopOfPage">Get back to the top</a></button>
+        <img src="./The OG Band_files/brand-twitter.ico" alt="twitter OG Band">
+        <img src="./The OG Band_files/brand-instagram.ico" alt="instagram OG Band">
+        <img src="./The OG Band_files/brand-youtube.ico" alt="youtube OG Band">
+        <button><a href="http://localhost:3000/index.php?error=none#TopOfPage">Get back to the top</a></button>
     </footer>
-</body>
-<script type="text/javascript" src="Javascript/gallery.js"></script>
-<script type="text/javascript" src="Javascript/navbar.js"></script>
-</html>
+
+<script type="text/javascript" src="./The OG Band_files/gallery.js.download"></script>
+<script type="text/javascript" src="./The OG Band_files/navbar.js.download"></script>
+</body></html>

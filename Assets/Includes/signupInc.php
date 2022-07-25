@@ -1,5 +1,4 @@
 <?php
-namespace LoginAndSignup;
 include "ini.php";
 //Checks if the user got here by pressing submit button. If not then code doesn't run
 if(isset($_POST["submit"])) {
@@ -21,11 +20,11 @@ if(isset($_POST["submit"])) {
     include "../Classes/signupClasses.php";
     $newUser = new SignupController($email, $firstname, $password, $repeatPassword, $isAdmin);
     $newUser->errorHandlingAndSignup();
-        header("location: ../index.php?error=none");
+        header("location: ../../index.php?error=none");
 
 } else {
     //If the user got here by typing the link, it referres them back to the login page if they are a regular user, else referres them to the admin page
-    header("location: ../Pages/login.php");
+    header("location: ../../Pages/login.php");
     
     
 }
