@@ -1,0 +1,85 @@
+* {
+    color: var(--white);
+}
+body {
+    background-color: var(--darkGreyBlue);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    
+}
+
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.Sidebar {
+    position: fixed;
+    width: 100%;
+    top: 65px;
+    background-color: var(--darkGrey);
+}
+
+.SideBarList {
+    display: flex;
+    text-decoration: none;
+}
+
+.OverviewBox:hover, .MyEventsBox:hover, .AnalyticsBox:hover, .SettingsBox:hover  {
+    background-color: #4f677992;
+    transition: 0.3s;
+}
+
+.uil, .SideBarText {
+    padding: 5px 10px;
+    float: left;
+}
+
+.SearchBox {
+    width: 400px;
+    height: 40px;
+    border-radius: 500px;
+    position: absolute;
+    top: 15px;
+    left: 800px;
+    padding-left: 20px;
+    font-size: 20px;
+    border: none;
+    
+}
+
+.SearchBox:hover {
+    box-shadow: 0 0 20px var(--black);
+}
+
+
+.searchButton {
+    background-color: var(--lightGreyBlue);
+    position: absolute;
+    top: 15px;
+    left: 1175px;
+    font-size: 20px;
+    width: 48px;
+    height: 43px;
+    border-radius: 400px;
+    padding: none;
+    z-index: 30;
+    cursor: pointer;
+}
+
+.uil-search {
+    position: relative;
+    top: 5px;
+    left: 3px;
+}
+
+
+.OverviewPage {
+    position: absolute;
+    top: 150px;
+}
+
+
+

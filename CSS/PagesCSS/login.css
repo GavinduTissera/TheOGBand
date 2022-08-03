@@ -124,7 +124,7 @@ main {
 /* Creating the box where all the login elemts go in */
 .LoginBox, .SignupBox {
     z-index: 99;
-    background: #18181e;
+    background: #18181e ;
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.168);
     width: 400px;
     padding: 50px;
@@ -188,7 +188,7 @@ main {
     transition: 0.3s ease;
 }
 /* Changing the styling of the submit button */
-.SubmitButton {
+.LoginSignupSubmitButton {
     cursor: pointer;
     font-family: Futura;
     letter-spacing: 1px;
@@ -206,7 +206,7 @@ main {
 
 }
 
-.SubmitButton:hover {
+.LoginSignupSubmitButton:hover {
     background-color: #beeff6;
 }
 

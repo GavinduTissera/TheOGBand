@@ -64,7 +64,7 @@
                             <input type="password" name="password" placeholder="Password" class="PasswordInput" required>
                             <div class="ShowPasswordButton"><i class="uil uil-eye-slash"></i></div>
                         </div>
-                        <button class="SubmitButton" type="submit" name="submit">LOG IN</button>
+                        <button class="LoginSignupSubmitButton" type="submit" name="submit">LOG IN</button>
                     </form>
                 </div>
                 <div class="SignupPrompt">
@@ -114,7 +114,7 @@
                             <input type="password" name="repeatpassword" placeholder="Repeat Password" class="PasswordInput" required>
                             <div class="ShowPasswordButton"><i class="uil uil-eye-slash"></i></div>
                         </div>
-                        <button class="SubmitButton" type="submit" name="submit">SIGN UP</button>
+                        <button class="LoginSignupSubmitButton" type="submit" name="submit">SIGN UP</button>
                     </form>
                 </div>
             </div>
@@ -122,7 +122,6 @@
         <!--====== SIGNUP END ======-->
         
     </main>
-<script type="text/javascript" src="../Javascript/navbar.js"></script>
 <script type="text/javascript" src="../Javascript/login.js"></script>
 </body>
 </html>

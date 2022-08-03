@@ -9,13 +9,13 @@ class SignupQuery extends dbConnector
     public function addUserToDBQuery()
     {
         //Utilisies placeholders "?" to prevent SQL injection
-        $queryStatement = $this->connectTodb()->prepare("INSERT INTO users (userEmail, userFirstName, userPassword, userIsAdmin) VALUES (?, ?, ?, ?)");
+        $queryStatement = $this->connectTodb()->prepare("INSERT INTO userLogins (userEmail, userFirstName, userPassword, userIsAdmin) VALUES (?, ?, ?, ?)");
         return $queryStatement;
     }
 
     protected function GetAllDataQuery()
     {
-        $queryStatement = $this->connectTodb()->prepare("SELECT * FROM users WHERE userEmail = ?;");
+        $queryStatement = $this->connectTodb()->prepare("SELECT * FROM userLogins WHERE userEmail = ?;");
         return $queryStatement;
     }
 
@@ -85,11 +85,6 @@ class SignupController extends SignupQuery {
             header("location: ../../Pages/login.php?error=passwordsDontMatch");
             exit();
         } 
-
-        if (strlen(trim($this->password) < 6)) {
-            header("location: ../../Pages/login.php?error=passwordsLengthError");
-            exit();
-        }
         $this->addUserToDB($this->email, $this->firstname, $this->password, $this->isAdmin); 
         $queryStatement = $this->GetAllDataQuery($this->email);
         $queryStatement->execute([$this->email]);
