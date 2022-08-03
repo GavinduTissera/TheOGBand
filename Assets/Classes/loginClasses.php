@@ -9,7 +9,7 @@ class LoginQuery extends dbConnector
 
     protected function GetAllDataQuery($email)
     {
-        $queryStatement = $this->connectTodb()->prepare("SELECT * FROM users WHERE userEmail = ?;");
+        $queryStatement = $this->connectTodb()->prepare("SELECT * FROM userLogins WHERE userEmail = ?;");
         $queryStatement->bindParam(1,$email);
         return $queryStatement;
     }
@@ -21,7 +21,7 @@ class LoginQuery extends dbConnector
     }
 
 
-    //Next 2 functions return error messages if the database doesnt excecute the queries properly
+    //Next function returns error message if the database doesnt excecute the query properly
     protected function CheckifExcecutableQuery($email)
     {    
         $queryStatement = $this->GetAllDataQuery($email);
@@ -65,11 +65,7 @@ class LoginQuery extends dbConnector
         $_SESSION["userfirstname"] = $userArray[0]["userFirstName"];
         $_SESSION["userpassword"] = $userArray[0]["userPassword"];
         $_SESSION["userisadmin"] = $userArray[0]["userIsAdmin"];
-        var_dump($_SESSION);
         $queryStatement = null;
-
-        
-
     }
 }
 
