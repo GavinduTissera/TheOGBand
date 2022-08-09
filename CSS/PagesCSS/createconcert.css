@@ -1,0 +1,32 @@
+* {
+    color: var(--white);
+}
+body {
+    background-color: var(--darkGreyBlue);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 65px;
+}
+
+
+li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.ProgressBar {
+    width: 100%;
+    top: 65px;
+    background-color: var(--darkGrey);
+}
+
+.ProgressList {
+    display: flex;
+    text-decoration: none;
+}
+
+.fa-regular {
+    width: 30px;
+    height: 30px;
+}

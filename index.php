@@ -48,7 +48,13 @@
                             <div class="DropdownProfileMenu">
                                 <li><a class='NavBarProfile' href='index.php'>
                                     <?php
-                                    echo $_SESSION["userfirstname"];
+                                    //echo's out the name of the user. If it is longer than 10 characters it is truncated to not overfill the screen
+                                    if (strlen($_SESSION["userfirstname"]) >= 10) {
+                                        echo substr($_SESSION["userfirstname"],0,10)."...";
+                                    } else {
+                                        echo $_SESSION["userfirstname"];
+                                    }
+                                    
                                     ?>
                                 </a></li>
                                 <div class="DropdownContent">
@@ -97,13 +103,6 @@
                         VIEW TOUR DATES HERE
                     </button>
                 </div>
-                <!--
-                <div class="SocialMediaIcons">
-                    <i class="uil uil-twitter-alt"></i>
-                    <i class="uil uil-instagram"></i>
-                    <i class="uil uil-youtube"></i>
-                </div>
-                    -->
             </section>
             
             

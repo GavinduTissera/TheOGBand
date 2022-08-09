@@ -6,7 +6,7 @@ body {
     height: 100vh;
     width: 100%;
     position: absolute;
-    
+    top: 65px;
 }
 
 
@@ -16,7 +16,6 @@ li {
 }
 
 .Sidebar {
-    position: fixed;
     width: 100%;
     top: 65px;
     background-color: var(--darkGrey);
@@ -76,9 +75,191 @@ li {
 }
 
 
-.OverviewPage {
+.OverviewText {
+    font-size: 70px;
+    margin: 30px;
+    font-family: MontHeavy;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.OverviewBoxes, .SmallBoxes {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+}
+
+.OverviewBoxes .Box {
+    background-color: var(--lightGreyBlue);
+    padding: 10px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.281);
+    width: 330px;
+    height: 130px;
+}
+
+.SmallBoxes .SmallBox {
+    background-color: var(--lightGreyBlue);
+    padding: 10px;
+    margin: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.281);
+    width: 330px;
+    height: 70px;
+}
+
+.OverviewBoxes .Topic, .SmallBoxes .SmallTopic {
+    font-family: Futura;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.OverviewBoxes .Topic {
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.SmallBoxes .SmallTopic {
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+.OverviewBoxes .Text, .SmallBoxes .SmallText {
+    font-family: Futura;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.OverviewBoxes .Text {
+    font-size: 60px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.SmallBoxes .SmallText {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.OverviewBoxes .uil {
+    padding: 0;
+    font-size: 20px;
+    position: relative;
+}
+
+.MyEventsSection {
+    position: relative;
+    top: 50px;
+}
+
+.MyEventsSection .MyEventsText {
+    font-family: MontHeavy;
+    font-size: 50px;
+    margin: 20px;
+}
+
+.MyEventsSection .MyEventsTable {
+    width: 1100px;
+    background-color: var(--lightGreyBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 10px;
+    
+}
+
+.MyEventsSection .EventsTableRow {
+    background-color: var(--darkGrey);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 1000px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.DayAndMonthBox {
+    background-color: var(--lightGrey);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+}
+
+.EventMonth, .EventDay {
+    font-family: MontHeavy;
+}
+
+.EventMonth {
+    font-size: 20px;
+}
+
+.EventDay {
+    font-size: 40px;
+}
+
+.RestOfEventContent, .EventTime, .EventVenueNameCity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.EventName {
+    font-family: Futura;
+    font-weight: 5000;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.EventMoreDetails, .ViewTicketPage {
+    font-family: Futura;
+    letter-spacing: 1px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+}
+
+
+
+.TimeAndCity {
+    margin-right: 30px;
+}
+
+.Buttons {
     position: absolute;
-    top: 150px;
+    left: 900px;
+}
+
+.MoreDetailsButton, .ViewTicketPageButton {
+    margin: 10px;
+    width: 200px;
+}
+
+
+.EventMoreDetails {
+    position: relative;
 }
 
 

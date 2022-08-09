@@ -24,6 +24,7 @@
     :root {
         --black: #000000;
         --darkGrey: #1c1c23;
+        --lightGrey: #2e2e30;
         --darkGreyBlue: #2b3943;
         --lightGreyBlue: #4f6779;
         --lightBlue: #beeff6;
@@ -42,6 +43,10 @@
         background-color: var(--darkGreyBlue);
         scroll-behavior: smooth;
         color: var(--white);
+    }
+
+    button {
+        cursor: pointer;
     }
 
     body {

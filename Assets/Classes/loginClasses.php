@@ -1,5 +1,6 @@
 <?php
 include "ini.php";
+include "C:/xampp\htdocs\ComputerScienceNEA\RootFolder\Assets\Classes/CreateArrayCheckQuery.php";
 
 
 //Inherited from the db connector class. This class focuses on interacting with the database
@@ -14,33 +15,14 @@ class LoginQuery extends dbConnector
         return $queryStatement;
     }
 
-    protected function GetAssocArray($queryStatement)
-    {
-        $temp = $queryStatement->fetchAll(PDO::FETCH_ASSOC);
-        return $temp;
-    }
-
-
-    //Next function returns error message if the database doesnt excecute the query properly
-    protected function CheckifExcecutableQuery($email)
-    {    
-        $queryStatement = $this->GetAllDataQuery($email);
-        if (!$queryStatement->execute()) {
-            $queryStatement = null;
-            header("location: ../../Pages/login.php?error=failedToExcecute");
-            exit();
-        } 
-        $queryStatement = null;
-        
-    }
-
     //Checks if the user already exists in the database, by checking for matching emails
 
     protected function CheckPassword($email, $password)
     {
+        $getUserDatabaseCheck = new CreateArrayCheckQuery();
         $queryStatement = $this->GetAllDataQuery($email);
         $queryStatement->execute([$email]);
-        $hashedPassword = $this->GetAssocArray($queryStatement);
+        $hashedPassword = $getUserDatabaseCheck->GetAssocArray($queryStatement);
         $boolPasswordCheck = password_verify($password, $hashedPassword[0]["userPassword"]);
         return $boolPasswordCheck;
     }
@@ -50,14 +32,15 @@ class LoginQuery extends dbConnector
     {
         $queryStatement = $this->GetAllDataQuery($email);
         $queryStatement->execute([$email]);
-        $this->CheckifExcecutableQuery($email);
+        $getUserDatabaseCheck = new CreateArrayCheckQuery();
+        $getUserDatabaseCheck->CheckifExcecutableQuery($queryStatement);
         $passwordCheck = $this->CheckPassword($email, $password);
         if ($passwordCheck === false) {
             $queryStatement = null;
             header("location: ../../Pages/login.php?error=incorrectPassword");
             exit();
         }
-        $userArray = $this->GetAssocArray($queryStatement);
+        $userArray = $getUserDatabaseCheck->GetAssocArray($queryStatement);
         session_start();
         $_SESSION["userarray"] = $userArray;
         $_SESSION["userid"] = $userArray[0]["userID"];
@@ -86,9 +69,10 @@ class LoginController extends LoginQuery {
 
     protected function ExistingAccount()
     {
+        $getUserDatabaseCheck = new CreateArrayCheckQuery();
         $queryStatement = $this->GetAllDataQuery($this->email);
         $queryStatement->execute();
-        $this->CheckifExcecutableQuery($this->email);
+        $getUserDatabaseCheck->CheckifExcecutableQuery($queryStatement);
         if ($queryStatement->rowCount() === 0) {
             return false;
         } else {

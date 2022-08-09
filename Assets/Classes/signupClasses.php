@@ -1,5 +1,6 @@
 <?php
 include "ini.php";
+include "C:/xampp\htdocs\ComputerScienceNEA\RootFolder\Assets\Classes/CreateArrayCheckQuery.php";
 
 //Inherited from the db connector class. This class focuses on interacting with the database
 class SignupQuery extends dbConnector
@@ -17,12 +18,6 @@ class SignupQuery extends dbConnector
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT * FROM userLogins WHERE userEmail = ?;");
         return $queryStatement;
-    }
-
-    protected function GetAssocArray($queryStatement)
-    {
-        $temp = $queryStatement->fetchAll(\PDO::FETCH_ASSOC);
-        return $temp;
     }
     
 
@@ -88,7 +83,8 @@ class SignupController extends SignupQuery {
         $this->addUserToDB($this->email, $this->firstname, $this->password, $this->isAdmin); 
         $queryStatement = $this->GetAllDataQuery($this->email);
         $queryStatement->execute([$this->email]);
-        $userArray = $this->GetAssocArray($queryStatement);
+        $getArray = new CreateArrayCheckQuery();
+        $userArray = $getArray->GetAssocArray($queryStatement);
         
         session_start();
         $_SESSION["userid"] = $userArray[0]["userID"];
