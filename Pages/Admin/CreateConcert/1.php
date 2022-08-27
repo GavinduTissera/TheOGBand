@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="../../../CSS/PagesCSS/createconcert.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://kit.fontawesome.com/62b71b12cb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- === Link to javascript === -->
     
     <!--Document title-->
@@ -66,7 +67,7 @@
             <ul class="ProgressList">
                 <div class="EventBasics">
                     <li><a href="1.php" class="SideBarOverview">
-                        <i class="bi bi-1-circle"></i>
+                        <i class="bi bi-1-circle-fill"></i>
                         <h4 class="ProgressBarText Basics">EVENT BASICS</h4>
                     </a></li>
                 </div>

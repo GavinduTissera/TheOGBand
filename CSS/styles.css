@@ -45,6 +45,10 @@
         color: var(--white);
     }
 
+    *::-webkit-scrollbar-corner {
+        background: var(--darkGreyBlue);
+       }
+
     button {
         cursor: pointer;
     }
@@ -75,6 +79,10 @@
 
     ::-webkit-scrollbar-thumb:hover {
         background: var(--darkGrey);
+    }
+
+    ::-webkit-calendar-picker-indicator {
+        filter: invert(1);
     }
 
 

@@ -1,0 +1,21 @@
+.Completed td{
+    background-color: #18452e;
+}
+
+.Waiting td {
+    background-color: #C17B12;
+}
+
+.Refunded td {
+    background-color: #911138;
+}
+
+.ChooseAmountOfRows {
+    z-index: 300;
+    width: 100px;
+    height: 40px;
+}
+
+.hide {
+    display: none;
+}

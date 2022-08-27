@@ -14,6 +14,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="../../Images/Icons/TheOGBandLogoHD.png">
     <link rel="stylesheet" href="../../CSS/reset.css">
     <link rel="stylesheet" href="../../CSS/styles.css">
     <link rel="stylesheet" href="../../CSS/PagesCSS/dashboard.css">
@@ -72,9 +73,15 @@
                 </a></li>
             </div>
             <div class="MyEventsBox"> 
-                <li><a href="AdminEvents.php" class="SideBarMyEvents">
+                <li><a href="MyEvents.php" class="SideBarMyEvents">
                     <i class="uil uil-headphones"></i>
                     <h4 class="SideBarText MyEvents">MY EVENTS</h4>
+                </a></li>
+            </div>
+            <div class="MyOrdersBox"> 
+                <li><a href="MyOrders.php" class="SideBarMyEvents">
+                <i class="uil uil-shopping-basket"></i>
+                    <h4 class="SideBarText MyOrders">MY ORDERS</h4>
                 </a></li>
             </div>
             <div class="AnalyticsBox">
@@ -96,19 +103,74 @@
                 </div>
             <input class="SearchBox" type="text" placeholder="Search...">
         </div>
-        
     </div>
 
     <!-- Page content -->
     <section class="OverviewPage">
         <div class="BackgroundImage"></div>
+        <!-- header -->
         <h2 class="OverviewText">OVERVIEW</h2>
+        <!-- radio buttons that determine the dates that the sql commands are searched from -->
+        <div class="OverviewTimeButtons">
+            <div class="TimeButtons">
+                <form action="../../Assets/Includes/adminDashboardInc.php" method="POST" id="TimeFrameSet">
+                    <button type="submit" name="TimeButtonSAT" value="AllTime" id="AllTime" class="TimeButton 
+                    <?php 
+                        if ($_SESSION["ShowAllTime"] === true) {
+                            echo "selected";
+                        } else {
+                            echo "deselected";
+                        }
+                    ?>">ALL TIME</button>
+                    <button type="submit" name="TimeButtonSLM" value="LastMonth" id="LastMonth" class="TimeButton 
+                    <?php 
+                        if ($_SESSION["ShowLastMonth"] === true) {
+                            echo "selected";
+                        } else {
+                            echo "deselected";
+                        }
+                    ?>">LAST MONTH</button>
+                    <button type="submit" name="TimeButtonsSLW" value="LastWeek" id="LastWeek" class="TimeButton 
+                    <?php 
+                        if ($_SESSION["ShowLastWeek"] === true) {
+                            echo "selected";
+                        } else {
+                            echo "deselected";
+                        }
+                    ?>">LAST WEEK</button>
+                </form>
+                <button name="TimeButtonsSCD" id="ShowCustomDates" value="CustomDate" class="TimeButtonCustom 
+                <?php 
+                    if ($_SESSION["ShowCustomDates"] === true) {
+                        echo "selected";
+                    } else {
+                        echo "deselected";
+                    }
+                ?>">SHOW CUSTOM DATES</button>
+                <form action="../../Assets/Includes/adminDashboardInc.php" method="POST" id="ShowCustomDateDashboardForm">
+                    <div class="DateOne">
+                        <label for="StartDate" class="DateLabel hidden">START DATE:</label>
+                        <input type="date" name="StartDateDashboard" id="StartDate" class="Dates hidden" required>
+                    </div>
+                    <div class="DateTwo">
+                        <label for="EndDate" class="DateLabel hidden">END DATE:</label>
+                        <input type="date" name="EndDateDashboard" id="EndDate" class="Dates hidden" required>
+                    </div>
+                    <!-- When the button is pressed the form sends  -->
+                    <button type="submit" name="SCDsubmit" class="ShowCustomDatesSubmit hidden">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+        <!-- class that surrounds the overview boxes -->
         <div class="OverviewBoxes">
+            <!-- every "i" represents an icon used -->
             <i class="uil uil-money-stack"></i>
             <div class="Revenue Box">    
+                <!-- header of the box -->
                 <h3 class="Topic Revenue">TOTAL REVENUE</h3>
                 <p class="Text TotalRevenue">
                     <?php
+                        // taking the information from the database
                         echo "£".$_SESSION["Sales.NetEarnings"];
                     ?>
                 </p>
@@ -132,9 +194,10 @@
                 </p>
             </div>
         </div>
+        <!-- similar to the boxes before except there are 5 and they are of smaller size -->
         <div class="SmallBoxes">
             <div class="TotalUsers SmallBox">
-                <h3 class="SmallTopic UserTotal">TOTAL USERS</h3>
+                <h3 class="SmallTopic UserTotal">TOTAL USERS SIGNUP</h3>
                 <p class="SmallText TotalUsersText">
                     <?php
                         echo $_SESSION["Sales.TotalUsers"];
@@ -175,13 +238,17 @@
             </div>
         </div>
         <!-- === EVENT SECTION === -->
+        <!-- purpose is to display the next 5 events that are to happen -->
         <div class="MyEventsSection">
-            <h3 class="MyEventsText">MY EVENTS</h3>
+            <h3 class="MyEventsText">NEXT EVENTS</h3>
             <div class="MyEventsTable">
+                <!-- displays information for event 1 -->
                 <?php
-                if (isset($_SESSION["Events-EventsDateTime.EventMonth1"])) {
+                // only displays event information if the event exists
+                if (isset($_SESSION["Events-EventsDateTime.EventMonth0"])) {
                     ?>
                     <div class="EventsTableRow One">
+                        <!-- date and month go into special div to contain them -->
                         <div class="DayAndMonthBox">
                             <h4 class="EventMonth">
                                 <?php
@@ -214,6 +281,7 @@
                                     ?>
                                 </h4>
                             </div>
+                            <!-- buttons are used to redirect to the event page and event  -->
                             <div class="Buttons">
                                 <div class="MoreDetailsButton">
                                     <a href="EDITTHISLATER.php">
@@ -239,7 +307,7 @@
                 <?php
                 }
                 ?>
-
+                <!-- displays information for event 2 -->
                 <?php
                 if (isset($_SESSION["Events-EventsDateTime.EventMonth1"])) {
                     ?>
@@ -301,7 +369,7 @@
                 <?php
                 }
                 ?>
-
+                <!-- displays information for event 3 -->
                 <?php
                 if (isset($_SESSION["Events-EventsDateTime.EventMonth2"])) {
                     ?>
@@ -363,7 +431,7 @@
                 <?php
                 }
                 ?>
-
+                <!-- displays information for event 4 -->
                 <?php
                 if (isset($_SESSION["Events-EventsDateTime.EventMonth3"])) {
                     ?>
@@ -425,7 +493,7 @@
                 <?php
                 }
                 ?>
-
+                <!-- displays information for event 5 -->
                 <?php
                 if (isset($_SESSION["Events-EventsDateTime.EventMonth4"])) {
                     ?>
@@ -491,5 +559,24 @@
             </div>       
         </div>
     </section>
+
+    <script>
+        // Gets the button that says "SHOW CUSTOM DATES"
+        const CustomDatesButton = document.getElementById("ShowCustomDates");
+        // adds an event listener that checks when it is clicked
+        CustomDatesButton.addEventListener("click", function() {
+            // when the button is clicked, it gets all elements that have a class name of hidden or active. It iterates through them and it changes hidden to active and vice versa
+            const hiddenElements = document.querySelectorAll(".hidden, .active");
+            hiddenElements.forEach(element => {
+                if (element.classList.contains("hidden")) {
+                    element.classList.remove("hidden");
+                    element.classList.add("active");
+                } else {
+                    element.classList.remove("active");
+                    element.classList.add("hidden");
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -1,6 +1,8 @@
 * {
     color: var(--white);
+    font-family: Montserrat;
 }
+
 body {
     background-color: var(--darkGreyBlue);
     height: 100vh;
@@ -9,6 +11,9 @@ body {
     top: 65px;
 }
 
+.hidden, .notshown {
+    display: none;
+}
 
 li {
     text-decoration: none;
@@ -21,28 +26,40 @@ li {
     background-color: var(--darkGrey);
 }
 
+.SideBarText {
+    font-family: MontLight;
+    letter-spacing: 1px;
+    padding: 5px;
+    float: left;
+}
+
 .SideBarList {
     display: flex;
     text-decoration: none;
 }
 
-.OverviewBox:hover, .MyEventsBox:hover, .AnalyticsBox:hover, .SettingsBox:hover  {
+.OverviewBox:hover, .MyEventsBox:hover, .MyOrdersBox:hover, .AnalyticsBox:hover, .SettingsBox:hover  {
     background-color: #4f677992;
     transition: 0.3s;
 }
 
-.uil, .SideBarText {
-    padding: 5px 10px;
+.uil {
+    padding: 5px;
     float: left;
 }
 
+.SideBarList .uil {
+    position: relative;
+    top: -2px;
+}
+
 .SearchBox {
-    width: 400px;
+    width: 270px;
     height: 40px;
     border-radius: 500px;
     position: absolute;
-    top: 15px;
-    left: 800px;
+    top: 13px;
+    left: 970px;
     padding-left: 20px;
     font-size: 20px;
     border: none;
@@ -57,12 +74,12 @@ li {
 .searchButton {
     background-color: var(--lightGreyBlue);
     position: absolute;
-    top: 15px;
-    left: 1175px;
+    top: 13px;
+    left: 1215px;
     font-size: 20px;
     width: 48px;
     height: 43px;
-    border-radius: 400px;
+    border-radius: 50%;
     padding: none;
     z-index: 30;
     cursor: pointer;
@@ -71,7 +88,102 @@ li {
 .uil-search {
     position: relative;
     top: 5px;
-    left: 3px;
+    left: 8px;
+}
+
+
+.TimeButtons, .ButtonsText {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TimeButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    transition: 1s;
+}
+
+.TimeButtons .TimeButton, .TimeButtons .TimeButtonCustom, .TimeButtons .ShowCustomDatesSubmit {
+    font-family: MontLight;
+    height: 50px;
+    width: 280px;
+    margin: 0 5px;
+    border-radius: 10px;
+    background-color: var(--lightGreyBlue);
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+#ShowCustomDateDashboardForm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DateOne, .DateTwo, .ShowCustomDatesSubmit {
+    margin-top: 40px;
+    position: relative;
+}
+
+.DateOne {
+    left: -20px;
+}
+
+.ShowCustomDatesSubmit {
+    top: 20px;
+    right: -20px;
+}
+
+.TimeButtons input[type=date] {
+    height: 40px;
+    border: 2px solid var(--white);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.TimeButtons button:active {
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+.TimeButtons .selected {
+    background-color: var(--darkGrey);
+}
+
+.ButtonsText {
+    position: relative;
+    top: -30px;
+    user-select: none;
+}
+
+.RadioText {
+    margin-left: 40px;
+}
+
+.OverviewTimeButtons input[type="radio"] {
+    width: 130px;
+    height: 45px;
+    border-radius: 10px;
+    background-color: var(--lightGreyBlue);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.421);
+    transition: 0.3s;
+    -webkit-appearance: none;
+}
+  
+.OverviewTimeButtons input[type="radio"]:focus { 
+    outline: none;
+}
+  
+.OverviewTimeButtons input[type="radio"]:checked { 
+    background-color: var(--lightGrey);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.421);
 }
 
 

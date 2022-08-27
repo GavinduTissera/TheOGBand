@@ -1,0 +1,25 @@
+Things I need to do
+
+DONE 1. Create the my events tab. It has all of the events and is sortable
+    DONE a. Create the buttons that filter out and in past and future events  
+    DONE b. create the button that shows 2 input forms, that take in 2 dates and has a submit form
+    DONE c. Use the 2 dates as limits for start date and end date and add queries for all 4 buttons
+    DONE d. Allow the table to be sorted both ascending and descending with merge sort by the values in a header, whenever that header is clicked
+    DONE e. Create icons that show to the user when the header:
+        i. isnt sorted
+        ii. is sorted ascending
+        iii. is sorted descending
+DONE 2. Create the limiters for the overview tab on main menu (dashboard.php line 109)
+    DONE a. Write new queries for the database depending on what limiters are used, and if its custom or not
+3. Create a My Orders Tab
+    a. It should have all orders on them, with pagination and also searching features. There should also be a selector at the top to display how many items are shown at once on the page
+    b. The rows should also change colour depending on their order status (green for Completed, yellow for waiting and red for refunded)
+4. Create the latest orders tab on the dashboard
+5. Create a search bar for the my events tab so they can search through the events
+6. Create the create event screen (create concert folder)
+7. Create error messages for the login page
+8. Add a new optional field, country of residence, to the signup page and then use that information to create a map using jvectormap
+    a. Create a new database with countries and amount of people
+    b. create a csv file, convert it into json and then pass it into the map 
+9. Create the analytics page for the admin dashboard
+10. Create the tour page
