@@ -85,8 +85,8 @@
                 <!--Text that appears over the title page-->
                 <div class="MainLogo">
                     <h1 class="MainTextLogo">
-                        <span>The OG<br></span> 
-                        <span>Band</span> 
+                        <span>THE OG<br></span> 
+                        <span>BAND</span> 
                     </h1>
                 </div>
                 <!--The opening video for the OG band-->
@@ -225,7 +225,7 @@
                     <h3 class="header GetInTouch">GET IN TOUCH</h3>
                     <p class="CallToSubscribe">Subscribe to our mailing list and get notified of new music, tickets, news and more!</p>
                     <div class="SubmissionForm">
-                        <form class="MailingListForm" action="Assets/Includes/mailingList.php" method="post">
+                        <form class="MailingListForm" action="" method="post">
                             <h5 class="Emails">Email Address</h5>
                             <div class="Input Email">
                                 <i class="uil uil-envelope-alt"></i>
@@ -251,7 +251,12 @@
                                 <i class="uil uil-calendar-alt"></i>
                                 <input type="date" name="dateofbirth" id="dateofbirth" placeholder="Birth Date" min="1899-01-01" max="" required>
                             </div>
-                            <button class="SubmitButton" type="submit" name="submit">SUBSCRIBE</button>
+
+                            <button class="SubmitButton" type="submit" name="submit">
+                                <span class="submitting">
+                                    SUBSCRIBE
+                                </span>  
+                            </button>
                         </form>
                     </div>
                 </div>      
@@ -296,6 +301,10 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <!--Loading script files-->
     <script type="text/javascript" src="Javascript/gallery.js"></script>
-    <script type="text/javascript" src="Javascript/date.js"></script>
+    <script type="module">
+        import {GetCurrentDate} from "./Javascript/date.js";
+        var today = GetCurrentDate()
+        document.getElementById("dateofbirth").setAttribute("max", today);
+    </script>
 </body>
 </html>

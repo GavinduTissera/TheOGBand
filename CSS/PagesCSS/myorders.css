@@ -1,21 +1,140 @@
+.TableContainer {
+    width: 1200px;
+    max-height: 400px;
+    overflow: auto;
+    overflow-x: scroll;
+    margin: auto;
+    border: none;
+    padding-top: 0px;
+    position: relative;
+    top: 0px;
+
+}
+
+tr.Completed td {
+    color: #96f2d7;
+}
+
 .Completed td{
-    background-color: #18452e;
+    background-color: #17332d;
+    
+}
+
+tr.Waiting td {
+    color: #ffec99;
 }
 
 .Waiting td {
-    background-color: #C17B12;
+    background-color: #43281a;
+    color: #2d0000;
+}
+
+tr.Refunded td{
+    color: #ffc9c9;
 }
 
 .Refunded td {
-    background-color: #911138;
+    background-color: #3c1d2a;
+    
+}
+
+.SelectRowsGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--darkGrey);
+    padding: 10px;
+    margin: -10px 330px 10px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 50px;
+}
+
+.SelectTitle {
+    font-family: MontLight;
 }
 
 .ChooseAmountOfRows {
-    z-index: 300;
-    width: 100px;
+    position: relative;
+    z-index: 2;
+    width: 200px;
     height: 40px;
+    background-image: var(--peachGradientFaded);
+    text-align-last: center;
+    margin-left: 10px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.384);
+    border-radius: 20px;
+    border: none;
+    font-family: Montserrat;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.ChooseAmountOfRows option {
+    text-align: center;
+    background-color: var(--darkGrey);
+    color: var(--white);
+    height: 20px;
+    font-size: 15px;
+    font-family: Montserrat;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.ChooseAmountOfRows option:hover {
+    background-color: blue;
 }
 
 .hide {
     display: none;
+}
+
+.pagination li {
+    cursor: pointer;
+    float: left;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 10px;
+    color: var(--pinkHighlight);
+    font-family: Montserrat;
+    font-weight: 700;
+    text-align: center;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    margin: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.527);
+    -webkit-user-select: none;
+    user-select: none;
+    
+}
+
+.pagination li:active {
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.795);
+}
+
+.pagination li.start, .pagination li.prev, .pagination li.next, .pagination li.end {
+    border: 1px solid transparent;
+}
+
+.DataRows .active {
+    background-image: var(--peachGradient);
+    color: var(--white);
+    width: 55px;
+    height: 55px;
+    border: none;
+}
+
+.pagination {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: var(--darkGrey);
 }

@@ -29,8 +29,12 @@
         --lightGreyBlue: #4f6779;
         --lightBlue: #beeff6;
         --whiteBlue: #c9e7eb;
-        --white: #fff;
+        --white: #fff ;
+        --pinkHighlight: #ed837a;
         --normalBoxShadow: 3px 5px 15px var(--black);
+        --peachGradient: linear-gradient(45deg, #ed6ea0, #ec8c69);
+        --peachGradientFaded: linear-gradient(65deg, #ed6ea1ba, #ec8c69ba);
+        --clickedButtonShadow: 0 0 5px #000000;
 
         
 
@@ -43,10 +47,11 @@
         background-color: var(--darkGreyBlue);
         scroll-behavior: smooth;
         color: var(--white);
+        
     }
 
     *::-webkit-scrollbar-corner {
-        background: var(--darkGreyBlue);
+        background: var(--darkGrey);
        }
 
     button {
@@ -56,7 +61,7 @@
     body {
         overflow-x: hidden;
         overflow-y: scroll;
-        background-color: var(--darkGrey);
+        background-color: var(--darkGreyBlue);
     }
 
     /* To allow for parallax effect on scroll */
@@ -68,17 +73,18 @@
     }
 
     ::-webkit-scrollbar-track {
-        background: var(--lightGreyBlue);
+        background: var(--darkGrey);
+        border-radius: 20px;
     }
 
     ::-webkit-scrollbar-thumb {
-        background: var(--darkGreyBlue);
+        background-image: var(--peachGradientFaded);
         border-radius: 50px;
-        
+        transition: 0.3s;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: var(--darkGrey);
+        background: var(--peachGradient);
     }
 
     ::-webkit-calendar-picker-indicator {
@@ -138,12 +144,13 @@
 
 
 
-    li {
+    .NavBar li {
         float: left;
         padding: 22.5px;
+        cursor: pointer;
     }
 
-    li:hover {
+    .NavBar li:hover {
         backdrop-filter: blur(30px);
     }
 
@@ -249,13 +256,21 @@
         border: none;
         border-radius: 10px;
         box-shadow: var(--normalBoxShadow);
-        background-color: #26262fbd;
-        transition: 0.3s;
+        background-image: var(--peachGradient);
+        opacity: 0.8;
     }
 
     .BookTickets:hover {
-        background-color: var(--darkGreyBlue);
+        opacity: 1;
     }
+    
+    .BookTickets:active {
+        opacity: 1;
+        position: absolute;
+        top: 1px;
+        box-shadow: var(--clickedButtonShadow);
+    }
+    
 
     h1 {
         font-family: MontHeavy;
@@ -264,14 +279,19 @@
         left: 5%;
         top: 200px;
         text-transform: uppercase;
-        text-shadow: 0px 1px 10px rgb(10, 10, 10); 
-        -webkit-clip-path: polygon(95% 0, 100% 100%, 0 85%, 0 00%);
-        clip-path: polygon(95% 0, 100% 100%, 0 85%, 0 0%);
+        /* text-shadow: 0px 1px 10px rgb(10, 10, 10);  */
+        -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 00%);
+        clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%);
         opacity: 1;
         animation-name: titleAnimation;
         animation-timing-function:ease;
         animation-duration: 3s;
         text-align: left;
+        background-image: var(--peachGradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
     }
     
 
@@ -326,13 +346,13 @@
           opacity: 0;
           -webkit-clip-path: polygon(80% 20%, 100% 40%, 0 60%, 0 50%);
           clip-path: polygon(90% 20%, 100% 40%, 0 60%, 0 50%);
-      }
+        }
       100% {
           transform: translateX(0px);
           opacity: 1;
-          -webkit-clip-path: polygon(95% 0, 100% 100%, 0 85%, 0 0%);
-          clip-path: polygon(95% 0, 100% 100%, 0 85%, 0 0%);
-      }
+          -webkit-clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%);
+          clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 0%);
+        }
     }
 
 
@@ -533,16 +553,23 @@
         color: var(--lightGreyBlue);
         font-size: 40px;
         cursor: pointer;
-        background: rgba(0, 0, 0, 0.1);
+        background-image: var(--peachGradient);
+        background-size: 100%;
         border-radius: 5px;
+        box-shadow: 0 0 20px #00000064;
+        opacity: 0.5;
         transition: 0.5s;
         margin-top: 20%;
     }
 
     /* hover animations for the buttons */
     .-button:hover{
-        color: var(--whiteBlue);
-        background: rgba(0, 0, 0, 0.6);
+        color: var(--white);
+        opacity: 1;
+    }
+
+    .-button:active {
+        box-shadow: var(--clickedButtonShadow);
     }
 
     /* Spacing the buttons out */
@@ -589,7 +616,7 @@
 
     /* Setting traits of the radio buttons on the bottom */
     .Manualbtn {
-        border: 3px solid var(--lightGreyBlue);
+        border: 3px solid #ed6ea0;
         padding: 5px;
         cursor: pointer;
         border-radius: 10px;
@@ -603,7 +630,7 @@
 
     /* Setting hover animations for the radio buttons (filling them in) */
     .Manualbtn:hover {
-        background: var(--lightGreyBlue);
+        background: var(--pinkHighlight);
     }
 
     /* If the radio buttons are checked, then it moves right until it reaches the desired image */
@@ -637,7 +664,7 @@
     }
 
     .AutoNavigation div{
-        border: 3px solid var(--lightGreyBlue);
+        border: 3px solid var(--pinkHighlight);
         padding: 5px;
         border-radius: 10px;
         transition: 1s;
@@ -648,23 +675,23 @@
     }
 
     #radio1:checked ~ .AutoNavigation .Autobtn1 {
-        background: var(--lightGreyBlue)
+        background: var(--pinkHighlight)
     }
 
     #radio2:checked ~ .AutoNavigation .Autobtn2 {
-        background: var(--lightGreyBlue)
+        background: var(--pinkHighlight)
     }
 
     #radio3:checked ~ .AutoNavigation .Autobtn3 {
-        background: var(--lightGreyBlue)
+        background: var(--pinkHighlight)
     }
 
     #radio4:checked ~ .AutoNavigation .Autobtn4 {
-        background: var(--lightGreyBlue)
+        background: var(--pinkHighlight)
     }
 
     #radio5:checked ~ .AutoNavigation .Autobtn5 {
-        background: var(--lightGreyBlue)
+        background: var(--pinkHighlight)
     }
 
     /* === GALLERY SECTION END === */
@@ -765,20 +792,63 @@
         letter-spacing: 1px;
         font-weight: 600;
         font-size: 20px;
-        background: var(--white);
-        color: var(--lightGreyBlue);
         border: none;
         outline: none;
         border-radius: 5px;
         width: 400px;
         padding: 10px 25px;
         margin-top: 20px;
-        transition: 0.3s ease;
-    
+        background-image: linear-gradient(
+            45deg, 
+            #fff 0%,
+            #fff 30%,
+            #ed6ea0,
+            #ec8c69 
+        );
+        background-size: 270%;
+        background-repeat: no-repeat;
+        background-position: top right;
+        animation: forwardsButton 1s ease-in-out 0s forwards;
+    }
+
+    .submitting {
+        font-family: MontHeavy;
+        font-weight: 700;
+        background-image: linear-gradient(
+            45deg, 
+            #ed6ea0 25%,
+            #ec8c69 55%,
+            #fff 20%
+        );
+        background-size: 270%;
+        background-repeat: no-repeat;
+        background-position: top right;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; 
+        animation: forwardsButton 1s ease-in-out 0s forwards;
     }
     
-    .SubmitButton:hover {
-        background-color: var(--lightBlue);
+    .SubmitButton:hover .submitting, .SubmitButton:hover{
+        animation: backwardsButton 1s ease-in-out 0s forwards;
+    }
+
+    @keyframes forwardsButton {
+        0% {
+            background-position: top left;
+        }
+        100% {
+            background-position: top right;
+        }
+    }
+
+    @keyframes backwardsButton {
+        0% {
+            background-position: top right;
+        }
+        100% {
+            background-position: top left;
+        }
     }
 
     /* === MAILING LIST SECTION END === */
@@ -808,6 +878,10 @@
         top: 100px;
         margin: 0 auto;
         font-size: 30px;
+        background-image: var(--peachGradient);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     .FooterIcon.One {

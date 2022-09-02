@@ -1,0 +1,35 @@
+Date : 2022-08-31 22:15:40
+Directory : c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages
+Total : 9 files,  1732 codes, 38 comments, 109 blanks, all 1879 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| PHP      |          9 |      1,732 |         38 |        109 |      1,879 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                          | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                             |          9 |      1,732 |         38 |        109 |      1,879 |
+| Admin                                                                         |          8 |      1,620 |         38 |         94 |      1,752 |
+| Admin\CreateConcert                                                           |          4 |        255 |          4 |         19 |        278 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                      | language | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert.php   | PHP      |         66 |          2 |          6 |         74 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\1.php | PHP      |        131 |          2 |          8 |        141 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\2.php | PHP      |        124 |          2 |          9 |        135 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\3.php | PHP      |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\4.php | PHP      |          0 |          0 |          1 |          1 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\Dashboard.php       | PHP      |        555 |          7 |         20 |        582 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\MyEvents.php        | PHP      |        361 |         15 |         26 |        402 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\MyOrders.php        | PHP      |        383 |         10 |         23 |        416 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\login.php                 | PHP      |        112 |          0 |         15 |        127 |
+| Total                                                                         |          |      1,732 |         38 |        109 |      1,879 |
++-------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

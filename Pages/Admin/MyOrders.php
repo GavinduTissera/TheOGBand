@@ -113,16 +113,18 @@ if ($_SESSION["userisadmin"] !== 1) {
 
             <h2 class="OverviewText">MY ORDERS</h2>
             <div class="SelectRowsGroup">
-                <h2 class="SelectTitle"></h2>
-                <select name="rowspicker" id="rowspicker" class="ChooseAmountOfRows">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="75">75</option>
-                    <option value="100">100</option>
+                <h2 class="SelectTitle">Select the amount of rows per page: </h2>
+                <select name="rowspicker" id="rowspicker" class="ChooseAmountOfRows" >
+                    <div class="options">
+                        <option value="5000">Show All Rows</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="75">75</option>
+                        <option value="100">100</option>
+                    </div>
                 </select>
             </div>
             <!-- Actual table that includes the orders -->
@@ -252,7 +254,41 @@ if ($_SESSION["userisadmin"] !== 1) {
                     <tbody>
                         <?php
                         include_once "../../Assets/Includes/MyOrdersTable/AllOrders.php";
+                        for ($i=5; $i < 50; $i++) { 
+                            ?> 
+                            <tr>
+                                <td><?php echo $i ?></td>
+                                <td>Event Name <?php echo $i ?></td>
+                                <td>Ticket Name <?php echo $i ?></td>
+                                <td>3 <?php echo $i ?></td>
+                                <td>
+                                    <?php 
+                                    $random = rand(100,100000) /100;
+                                    echo $random;
+                                    ?>
+                                </td>
+                                <td>2022-08-20 16:35:27</td>
+                                <td>Gav<?php echo $i ?></td>
+                                <td>Tiss<?php echo $i ?></td>
+                                <td>gavtiss@gmail.com<?php echo $i ?></td>
+                                <td>000011101010<?php echo $i ?></td>
+                                <td class="OrderStatusColour">
+                                <?php
+                                $randomtwo = rand(1,3);
+                                if ($randomtwo == 1) {
+                                    echo "Completed";
+                                } else if ($randomtwo == 2) {
+                                    echo "Waiting";
+                                } else {
+                                    echo "Refunded";
+                                }
+                                ?>
+                                </td>
+                            </tr>
+                            <?php
+                        }
                         ?>
+
                     </tbody>
                 </table>
             </div>
@@ -260,16 +296,21 @@ if ($_SESSION["userisadmin"] !== 1) {
                 <nav>
                     <ul class="pagination">
 
-                        <li data-pagination="prev" id="next">
-                            <span> < 
-                                <span class="sr-only">(current)</span>
-                            </span>
+                        <li data-pagination="start" class="start">
+                            <span><<<</span>
                         </li>
+                        <li data-pagination="prev" class="prev">
+                            <span><</span>
+                        </li>
+                        <div class="DataRows">
+
+                        </div>
                         <!--	Here the JS Function Will Add the Rows -->
-                        <li data-pagination="next" id="prev">
-                            <span> < 
-                                <span class="sr-only">(current)</span>
-                            </span>
+                        <li data-pagination="next" class="next">
+                            <span>></span> 
+                        </li>
+                        <li data-pagination="end" class="end">
+                            <span>>>></span>
                         </li>
                     </ul>
                 </nav>

@@ -18,7 +18,7 @@
                 <td>
                     <!-- Cutting the string to 10 characters to remove the time section from the datetime -->
                     <?php
-                        echo substr($_SESSION["Events.AllEventDateTime".$i], 0, 10);
+                        echo substr($_SESSION["Events.AllEventStartTime".$i], 0, 10);
                     ?>
                 </td>
                 <td>
@@ -33,7 +33,14 @@
                 </td>
                 <td>
                     <?php
-                        echo $_SESSION["Events-AllEventsDateTime.StartTime".$i];
+                        // Cutting off the second digits since they are not being used
+                        echo substr($_SESSION["Events-AllStartTime".$i], 0, 5);
+                    ?>
+                </td>
+                <td>
+                    <?php
+                        // Cutting off the second digits since they are not being used
+                        echo substr($_SESSION["Events-AllEndTime".$i], 0, 5);
                     ?>
                 </td>
                 <td>

@@ -1,11 +1,28 @@
 <?php
     include "../../Assets/Classes/dbConnectorClasses.php";
+    
     session_start();
     // Doesn't allow non admins by checking in the database if they are admin
     if ($_SESSION["userisadmin"] !== 1) {
         header("location: ../../Pages/login.php?error=InvalidPermissions");
     }
-    include "../../Assets/Includes/adminDashboardInc.php";
+    if (!isset($_SESSION["ShowAllEvents"])) {
+        $_SESSION["ShowAllEvents"] = true;
+        $_SESSION["HidePastEvents"] = false;
+        $_SESSION["HideFutureEvents"] = false;
+        $_SESSION["ShowCustomEvents"] = false;
+    }
+    
+    if (!isset($_SESSION["ShowAllTime"])) {
+        //After getting logged out, all session variables get reset. This makes sure that once the admin logs back in, and clicks on dashboard, they can see the default of show data for all time as well as stop errors
+        include_once "../../Assets/Includes/adminDashboardInc.php";
+        $_SESSION["ShowAllTime"] = true;
+        $_SESSION["ShowLastMonth"] = false;
+        $_SESSION["ShowLastWeek"] = false;
+        $_SESSION["ShowCustomDates"] = false;
+        $salesData = new SalesController('1970-01-01',date('Y-m-d H:i:s'));
+        $salesData->SalesDataAllTime();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -244,315 +261,67 @@
             <div class="MyEventsTable">
                 <!-- displays information for event 1 -->
                 <?php
-                // only displays event information if the event exists
-                if (isset($_SESSION["Events-EventsDateTime.EventMonth0"])) {
-                    ?>
-                    <div class="EventsTableRow One">
-                        <!-- date and month go into special div to contain them -->
-                        <div class="DayAndMonthBox">
-                            <h4 class="EventMonth">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventMonth0"];
-                                ?>
-                            </h4>
-                            <h3 class="EventDay">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventDay0"];
-                                ?>
-                            </h3>
-                        </div>
-                        <div class="RestOfEventContent">
-                            <h3 class="EventName">
-                                <?php
-                                    echo $_SESSION["Events.EventName0"];
-                                ?>
-                            </h3>
-                            <div class="TimeAndCity">
-                                <h4 class="EventTime">
-                                    <i class="uil uil-clock"></i>
+                for ($i=0; $i < 5; $i++) { 
+                    if (isset($_SESSION["Events-EventMonth".$i])) {
+                        ?>
+                        <div class="EventsTableRow">
+                            <!-- date and month go into special div to contain them -->
+                            <div class="DayAndMonthBox">
+                                <h4 class="EventMonth">
+                                    <!-- Converts the month to uppercase and also makes it 3 letters long -->
                                     <?php
-                                        echo "Start time: ".$_SESSION["Events-EventsDateTime.StartTime0"];
-                                    ?>
-                                </h3>
-                                <h4 class="EventVenueNameCity">
-                                    <i class="uil uil-location-pin-alt"></i>
-                                    <?php
-                                        echo $_SESSION["Events-Venue.VenueName0"].", ". $_SESSION["Events-Venue.City0"];
+                                        echo strtoupper(substr(($_SESSION["Events-EventMonth".$i]), 0, 3));
                                     ?>
                                 </h4>
-                            </div>
-                            <!-- buttons are used to redirect to the event page and event  -->
-                            <div class="Buttons">
-                                <div class="MoreDetailsButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="EventMoreDetails">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                            MORE DETAILS
-                                        </button>
-                                    </a>  
-                                </div>
-                                <div class="ViewTicketPageButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="ViewTicketPage">
-                                            <i class="uil uil-external-link-alt"></i>
-                                            VIEW TICKET PAGE
-                                        </button>
-                                    </a>  
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                <?php
-                }
-                ?>
-                <!-- displays information for event 2 -->
-                <?php
-                if (isset($_SESSION["Events-EventsDateTime.EventMonth1"])) {
-                    ?>
-                    <div class="EventsTableRow Two">
-                        <div class="DayAndMonthBox">
-                            <h4 class="EventMonth">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventMonth1"];
-                                ?>
-                            </h4>
-                            <h3 class="EventDay">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventDay1"];
-                                ?>
-                            </h3>
-                        </div>
-                        <div class="RestOfEventContent">
-                            <h3 class="EventName">
-                                <?php
-                                    echo $_SESSION["Events.EventName1"];
-                                ?>
-                            </h3>
-                            <div class="TimeAndCity">
-                                <h4 class="EventTime">
-                                    <i class="uil uil-clock"></i>
+                                <h3 class="EventDay">
                                     <?php
-                                        echo "Start time: ".$_SESSION["Events-EventsDateTime.StartTime1"];
+                                        echo $_SESSION["Events-EventDay".$i];
                                     ?>
                                 </h3>
-                                <h4 class="EventVenueNameCity">
-                                    <i class="uil uil-location-pin-alt"></i>
-                                    <?php
-                                        echo $_SESSION["Events-Venue.VenueName1"].", ". $_SESSION["Events-Venue.City1"];
-                                    ?>
-                                </h4>
                             </div>
-                            <div class="Buttons">
-                                <div class="MoreDetailsButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="EventMoreDetails">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                            MORE DETAILS
-                                        </button>
-                                    </a>  
-                                </div>
-                                <div class="ViewTicketPageButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="ViewTicketPage">
-                                            <i class="uil uil-external-link-alt"></i>
-                                            VIEW TICKET PAGE
-                                        </button>
-                                    </a>  
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                <?php
-                }
-                ?>
-                <!-- displays information for event 3 -->
-                <?php
-                if (isset($_SESSION["Events-EventsDateTime.EventMonth2"])) {
-                    ?>
-                    <div class="EventsTableRow Three">
-                        <div class="DayAndMonthBox">
-                            <h4 class="EventMonth">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventMonth2"];
-                                ?>
-                            </h4>
-                            <h3 class="EventDay">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventDay2"];
-                                ?>
-                            </h3>
-                        </div>
-                        <div class="RestOfEventContent">
-                            <h3 class="EventName">
-                                <?php
-                                    echo $_SESSION["Events.EventName2"];
-                                ?>
-                            </h3>
-                            <div class="TimeAndCity">
-                                <h4 class="EventTime">
-                                    <i class="uil uil-clock"></i>
+                            <div class="RestOfEventContent">
+                                <h3 class="EventName">
                                     <?php
-                                        echo "Start time: ".$_SESSION["Events-EventsDateTime.StartTime2"];
+                                        echo $_SESSION["Events.EventName".$i];
                                     ?>
                                 </h3>
-                                <h4 class="EventVenueNameCity">
-                                    <i class="uil uil-location-pin-alt"></i>
-                                    <?php
-                                        echo $_SESSION["Events-Venue.VenueName2"].", ". $_SESSION["Events-Venue.City2"];
-                                    ?>
-                                </h4>
-                            </div>
-                            <div class="Buttons">
-                                <div class="MoreDetailsButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="EventMoreDetails">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                            MORE DETAILS
-                                        </button>
-                                    </a>  
+                                <div class="TimeAndCity">
+                                    <h4 class="EventTime">
+                                        <i class="uil uil-clock"></i>
+                                        <?php
+                                            echo "Start time: ".substr(($_SESSION["Events-StartTime".$i]), 0, 5);
+                                        ?>
+                                    </h3>
+                                    <h4 class="EventVenueNameCity">
+                                        <i class="uil uil-location-pin-alt"></i>
+                                        <?php
+                                            echo $_SESSION["Events-Venue.VenueName".$i].", ". $_SESSION["Events-Venue.City".$i];
+                                        ?>
+                                    </h4>
                                 </div>
-                                <div class="ViewTicketPageButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="ViewTicketPage">
-                                            <i class="uil uil-external-link-alt"></i>
-                                            VIEW TICKET PAGE
-                                        </button>
-                                    </a>  
-                                </div>
+                                <!-- buttons are used to redirect to the event page and event  -->
+                                <div class="Buttons">
+                                    <div class="MoreDetailsButton">
+                                        <a href="EDITTHISLATER.php">
+                                            <button class="EventMoreDetails">
+                                                <i class="uil uil-ellipsis-h"></i>
+                                                MORE DETAILS
+                                            </button>
+                                        </a>  
+                                    </div>
+                                    <div class="ViewTicketPageButton">
+                                        <a href="EDITTHISLATER.php">
+                                            <button class="ViewTicketPage">
+                                                <i class="uil uil-external-link-alt"></i>
+                                                VIEW TICKET PAGE
+                                            </button>
+                                        </a>  
+                                    </div>
+                                </div>   
                             </div>
-                            
                         </div>
-                        
-                    </div>
-                <?php
-                }
-                ?>
-                <!-- displays information for event 4 -->
-                <?php
-                if (isset($_SESSION["Events-EventsDateTime.EventMonth3"])) {
-                    ?>
-                    <div class="EventsTableRow Four">
-                        <div class="DayAndMonthBox">
-                            <h4 class="EventMonth">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventMonth3"];
-                                ?>
-                            </h4>
-                            <h3 class="EventDay">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventDay3"];
-                                ?>
-                            </h3>
-                        </div>
-                        <div class="RestOfEventContent">
-                            <h3 class="EventName">
-                                <?php
-                                    echo $_SESSION["Events.EventName3"];
-                                ?>
-                            </h3>
-                            <div class="TimeAndCity">
-                                <h4 class="EventTime">
-                                    <i class="uil uil-clock"></i>
-                                    <?php
-                                        echo "Start time: ".$_SESSION["Events-EventsDateTime.StartTime3"];
-                                    ?>
-                                </h3>
-                                <h4 class="EventVenueNameCity">
-                                    <i class="uil uil-location-pin-alt"></i>
-                                    <?php
-                                        echo $_SESSION["Events-Venue.VenueName3"].", ". $_SESSION["Events-Venue.City3"];
-                                    ?>
-                                </h4>
-                            </div>
-                            <div class="Buttons">
-                                <div class="MoreDetailsButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="EventMoreDetails">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                            MORE DETAILS
-                                        </button>
-                                    </a>  
-                                </div>
-                                <div class="ViewTicketPageButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="ViewTicketPage">
-                                            <i class="uil uil-external-link-alt"></i>
-                                            VIEW TICKET PAGE
-                                        </button>
-                                    </a>  
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                <?php
-                }
-                ?>
-                <!-- displays information for event 5 -->
-                <?php
-                if (isset($_SESSION["Events-EventsDateTime.EventMonth4"])) {
-                    ?>
-                    <div class="EventsTableRow Five">
-                        <div class="DayAndMonthBox">
-                            <h4 class="EventMonth">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventMonth4"];
-                                ?>
-                            </h4>
-                            <h3 class="EventDay">
-                                <?php
-                                    echo $_SESSION["Events-EventsDateTime.EventDay4"];
-                                ?>
-                            </h3>
-                        </div>
-                        <div class="RestOfEventContent">
-                            <h3 class="EventName">
-                                <?php
-                                    echo $_SESSION["Events.EventName4"];
-                                ?>
-                            </h3>
-                            <div class="TimeAndCity">
-                                <h4 class="EventTime">
-                                    <i class="uil uil-clock"></i>
-                                    <?php
-                                        echo "Start time: ".$_SESSION["Events-EventsDateTime.StartTime4"];
-                                    ?>
-                                </h3>
-                                <h4 class="EventVenueNameCity">
-                                    <i class="uil uil-location-pin-alt"></i>
-                                    <?php
-                                        echo $_SESSION["Events-Venue.VenueName4"].", ". $_SESSION["Events-Venue.City4"];
-                                    ?>
-                                </h4>
-                            </div>
-                            <div class="Buttons">
-                                <div class="MoreDetailsButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="EventMoreDetails">
-                                            <i class="uil uil-ellipsis-h"></i>
-                                            MORE DETAILS
-                                        </button>
-                                    </a>  
-                                </div>
-                                <div class="ViewTicketPageButton">
-                                    <a href="EDITTHISLATER.php">
-                                        <button class="ViewTicketPage">
-                                            <i class="uil uil-external-link-alt"></i>
-                                            VIEW TICKET PAGE
-                                        </button>
-                                    </a>  
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                    </div>
-                <?php
+                    <?php
+                    }     
                 }
                 ?>
 

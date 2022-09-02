@@ -1,0 +1,68 @@
+.Bar {
+    background-image: var(--peachGradient);
+    border-radius: 10px;
+    width: 13.5%;
+    height: 100%;
+    animation-name: ProgressBarLoad;
+    animation-duration: 4s;
+    animation-timing-function: ease;
+}
+
+@keyframes ProgressBarLoad {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 13.5%;
+    }
+}
+
+
+.TopBar .Two, .TopBar .Three, .TopBar .Four {
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+
+
+.OneLineSubmission, .LongTextSubmission{
+    padding: 0 40px 40px;
+}
+
+.FormInformation input{
+    font-family: Montserrat;
+    width: 90%;
+    height: 20px;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 20px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 30px;
+}
+
+.ConcertDescription {
+    border-bottom: 3px dotted rgb(255, 255, 255);
+}
+
+.FormInformation textarea {
+    font-family: Montserrat;
+    width: 90%;
+    font-size: 15px;
+    height: 100px;
+    padding: 10px 20px;
+    margin: 20px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 30px;
+}
+
+.SubmitButton {
+    position: relative;
+    top: -40px;
+}

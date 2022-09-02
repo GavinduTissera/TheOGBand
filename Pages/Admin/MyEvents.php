@@ -5,6 +5,10 @@
     if ($_SESSION["userisadmin"] !== 1) {
         header("location: ../../Pages/login.php?error=InvalidPermissions");
     }
+
+    if (!isset($_SESSION["UpdateEventsTable"])) {
+        $_SESSION["UpdateEventsTable"] = false;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -229,7 +233,15 @@
                                     <i class="uil uil-sort-amount-down notshown"></i>
                                 </div>
                             </th>
-                            <th class="TicketsBought headerTable none" id="6">
+                            <th class="EndTime headerTable none" id="6">
+                                <div class="ColumnID ColumnBox">
+                                    End Time
+                                    <i class="uil uil-sort shown"></i>
+                                    <i class="uil uil-sort-amount-up notshown"></i>
+                                    <i class="uil uil-sort-amount-down notshown"></i>
+                                </div>
+                            </th>
+                            <th class="TicketsBought headerTable none" id="7">
                                 <div class="ColumnID ColumnBox">
                                     <div class="tooltip">
                                         Tickets Bought
@@ -240,7 +252,7 @@
                                     <i class="uil uil-sort-amount-down notshown"></i>
                                 </div>
                             </th>
-                            <th class="Capacity headerTable none" id="7">
+                            <th class="Capacity headerTable none" id="8">
                                 <div class="ColumnID ColumnBox">
                                     <div class="tooltip">
                                         Capacity
@@ -251,7 +263,7 @@
                                     <i class="uil uil-sort-amount-down notshown"></i>
                                 </div>
                             </th>
-                            <th class="Address headerTable none" id="8">
+                            <th class="Address headerTable none" id="9">
                                 <div class="ColumnID ColumnBox">
                                     <div class="tooltip">
                                         Address
@@ -262,7 +274,7 @@
                                     <i class="uil uil-sort-amount-down notshown"></i>
                                 </div>
                             </th>
-                            <th class="Postcode headerTable none" id="9">
+                            <th class="Postcode headerTable none" id="10">
                                 <div class="ColumnID ColumnBox">
                                     <div class="tooltip">
                                         Postcode
@@ -277,19 +289,25 @@
                     </thead>
                     
                     <?php
-                        // in adminDashboardInc it makes these session variables have a value of true or false. These are then checked here and changes what events are shown based on what is true. Each one is stored in a seperate file for ease of reading
-                        if ($_SESSION["HidePastEvents"] === true) {
-                            include_once "../../Assets/Includes/MyEventsTables/HidePastEvents.php";
-                        } elseif ($_SESSION["HideFutureEvents"] === true) {
-                            include_once "../../Assets/Includes/MyEventsTables/HideFutureEvents.php";
-                        } elseif ($_SESSION["ShowAllEvents"] === true){
-                            include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
-                        } elseif ($_SESSION["ShowCustomEvents"] === true){
-                            include_once "../../Assets/Includes/MyEventsTables/ShowCustomEvents.php";
-                        } else {
-                            $_SESSION["ShowAllEvents"] = true;
-                            include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
-                        }
+                    include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
+                    if ($_SESSION["UpdateEventsTable"] == true) {
+                        include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
+                        $_SESSION["UpdateEventsTable"] = false;
+                    }
+                    
+                        // // in adminDashboardInc it makes these session variables have a value of true or false. These are then checked here and changes what events are shown based on what is true. Each one is stored in a seperate file for ease of reading
+                        // if ($_SESSION["HidePastEvents"] === true) {
+                        //     include_once "../../Assets/Includes/MyEventsTables/HidePastEvents.php";
+                        // } elseif ($_SESSION["HideFutureEvents"] === true) {
+                        //     include_once "../../Assets/Includes/MyEventsTables/HideFutureEvents.php";
+                        // } elseif ($_SESSION["ShowAllEvents"] === true){
+                            
+                        // } elseif ($_SESSION["ShowCustomEvents"] === true){
+                        //     include_once "../../Assets/Includes/MyEventsTables/ShowCustomEvents.php";
+                        // } else {
+                        //     $_SESSION["ShowAllEvents"] = true;
+                        //     include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
+                        // }
 
                     ?>
                     

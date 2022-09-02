@@ -9,11 +9,11 @@ if ($_SESSION["userisadmin"] === 1) {
     //Initialising class and then excecuting the methods inside it to get the values from server into the client side
     $eventsData = new EventsController();
     $eventsData->GetEventsDataFromDB();
-    $eventsData->GetAllEventsDataFromDB();
-    $eventsData->GetHPEEventsDataFromDB();
-    $eventsData->GetHFEEventsDataFromDB();
+    $eventsData->GetFullEventsDataFromDB();
     $orderData = new OrderController();
     $orderData->GetAllOrderDataFromDB();
+    $salesData = new SalesController('1970-01-01',date('Y-m-d H:i:s'));
+    $salesData->SalesDataAllTime();
     
     //Checks if the button to hide past, future of custom dates of events have been clicked. If they have then it updates the session variable, and then redirects them back to the main file
     if(isset($_POST["SALcheckbox"])) {
@@ -23,6 +23,8 @@ if ($_SESSION["userisadmin"] === 1) {
             $_SESSION["HideFutureEvents"] = false;
             $_SESSION["HidePastEvents"] = false;
             $_SESSION["ShowCustomEvents"] = false;
+            $eventsData->GetFullEventsDataFromDB();
+            $_SESSION["UpdateEventsTable"] = true;
         header("location: ../../Pages/Admin/MyEvents.php");
     }
 
@@ -36,6 +38,8 @@ if ($_SESSION["userisadmin"] === 1) {
         } else {
             $_SESSION["HidePastEvents"] = false;
         }
+        $eventsData->GetFullEventsDataFromDB();
+        $_SESSION["UpdateEventsTable"] = true;
         header("location: ../../Pages/Admin/MyEvents.php");
     }
     
@@ -48,6 +52,8 @@ if ($_SESSION["userisadmin"] === 1) {
         } else {
             $_SESSION["HideFutureEvents"] = false;
         }
+        $eventsData->GetFullEventsDataFromDB();
+        $_SESSION["UpdateEventsTable"] = true;
         header("location: ../../Pages/Admin/MyEvents.php");
     } 
     
@@ -63,6 +69,7 @@ if ($_SESSION["userisadmin"] === 1) {
         $_SESSION["HideFutureEvents"] = false;
         $_SESSION["HidePastEvents"] = false;
         $_SESSION["ShowAllEvents"] = false;
+        $_SESSION["UpdateEventsTable"] = true;
         header("location: ../../Pages/Admin/MyEvents.php");
     }  
 
@@ -90,6 +97,7 @@ if ($_SESSION["userisadmin"] === 1) {
             $_SESSION["ShowCustomDates"] = false;
         } else {
             $_SESSION["ShowLastMonth"] = false;
+            $_SESSION["ShowAllTime"] = true;
         }
         // DateTime() generates the current date
         $NewDate = new DateTime();
@@ -112,6 +120,7 @@ if ($_SESSION["userisadmin"] === 1) {
             $_SESSION["ShowCustomDates"] = false;
         } else {
             $_SESSION["ShowLastWeek"] = false;
+            $_SESSION["ShowAllTime"] = true;
         }
         $NewDate = new DateTime();
         $NewDate->sub(new DateInterval('P7D'));
@@ -134,11 +143,6 @@ if ($_SESSION["userisadmin"] === 1) {
         $salesData->SalesDataAllTime();
         header("location: ../../Pages/Admin/Dashboard.php");
     } 
-
-    // For MyOrders.php. Almost identical to MyEvents.php
-
-    
-
 }
 
 

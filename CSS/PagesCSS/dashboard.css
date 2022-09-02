@@ -20,6 +20,8 @@ li {
     list-style: none;
 }
 
+
+
 .Sidebar {
     width: 100%;
     top: 65px;
@@ -38,8 +40,13 @@ li {
     text-decoration: none;
 }
 
+.SideBarList li {
+    float: left;
+    padding: 22.5px;
+}
+
 .OverviewBox:hover, .MyEventsBox:hover, .MyOrdersBox:hover, .AnalyticsBox:hover, .SettingsBox:hover  {
-    background-color: #4f677992;
+    background-image: var(--peachGradientFaded);
     transition: 0.3s;
 }
 
@@ -72,7 +79,7 @@ li {
 
 
 .searchButton {
-    background-color: var(--lightGreyBlue);
+    background-image: var(--peachGradientFaded);
     position: absolute;
     top: 13px;
     left: 1215px;
@@ -113,14 +120,19 @@ li {
     height: 50px;
     width: 280px;
     margin: 0 5px;
-    border-radius: 10px;
-    background-color: var(--lightGreyBlue);
-    border: none;
+    background-color: var(--darkGrey);
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradientFaded) border-box;
+    border: 5px solid transparent;
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
     letter-spacing: 1px;
     font-size: 18px;
     font-weight: 800;
 }
+
+
+
 
 #ShowCustomDateDashboardForm {
     display: flex;
@@ -144,8 +156,11 @@ li {
 
 .TimeButtons input[type=date] {
     height: 40px;
-    border: 2px solid var(--white);
-    border-radius: 10px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 20px;
+    font-size: 15px;
     padding: 10px;
 }
 
@@ -154,12 +169,14 @@ li {
 }
 
 .TimeButtons .selected {
-    background-color: var(--darkGrey);
+    background-image: var(--peachGradient);
+    border: none;
 }
 
 .ButtonsText {
     position: relative;
     top: -30px;
+    -webkit-user-select: none;
     user-select: none;
 }
 

@@ -1,0 +1,111 @@
+.Bar {
+    background-image: var(--peachGradient);
+    border-radius: 10px;
+    width: 41.5%;
+    height: 100%;
+    animation-name: ProgressBarLoad;
+    animation-duration: 4s;
+    animation-timing-function: ease;
+}
+
+@keyframes ProgressBarLoad {
+    0% {
+        width: 13.5%;
+    }
+    100% {
+        width: 41.5%;
+    }
+}
+
+.TopBar .Three, .TopBar .Four {
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.3;
+}
+
+.TopBar .Basics {
+    background-image: var(--peachGradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.DateTimeSubmission {
+    padding: 40px 0 40px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.DateTimeOne, .DateTimeTwo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.DateTimeTwo {
+    position: relative;
+    left: 60px;
+}
+
+.SeperatorBar {
+    position: absolute;
+    left: 530px;
+    width: 0px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradientFaded) border-box;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    height: 120px;
+}
+
+.DateSubmission input[type="date"], .TimeSubmission {
+    position: relative;
+    left: 20px;
+}
+
+.TimeSubmission {
+    position: relative;
+    top: 17px;
+}
+
+.TimePickerDropdown {
+    margin: 10px;
+    margin-left: 20px;
+    height: 60px;
+    overflow-y: visible;
+    z-index: 100;
+}
+
+.TimePickerSelect {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    text-align: center;
+    font-size: 30px;
+    width: 100px;
+    height: auto;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 20px;
+    z-index: 100;
+    
+}
+
+.TimePickerSelect option {
+    background-color: var(--darkGrey);
+    border-radius: 10px;
+}
+
+.TimeColon {
+    font-size: 20px;
+    padding: 5px;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+.FormText {
+    margin-bottom: 20px;
+}

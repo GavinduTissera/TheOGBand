@@ -1,0 +1,45 @@
+Date : 2022-08-31 22:15:36
+Directory : c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript
+Total : 16 files,  -1400 codes, 39 comments, -50 blanks, all -1411 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          7 |        332 |         77 |         59 |        468 |
+| PHP        |          9 |     -1,732 |        -38 |       -109 |     -1,879 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                          | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                             |         16 |     -1,400 |         39 |        -50 |     -1,411 |
+| ..                                                                            |          9 |     -1,732 |        -38 |       -109 |     -1,879 |
+| ..\Pages                                                                      |          9 |     -1,732 |        -38 |       -109 |     -1,879 |
+| ..\Pages\Admin                                                                |          8 |     -1,620 |        -38 |        -94 |     -1,752 |
+| ..\Pages\Admin\CreateConcert                                                  |          4 |       -255 |         -4 |        -19 |       -278 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                      | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\date.js              | JavaScript |         16 |          1 |          1 |         18 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\gallery.js           | JavaScript |         26 |         10 |          8 |         44 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\login.js             | JavaScript |         29 |          8 |         11 |         48 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\scroll.js            | JavaScript |          7 |          0 |          3 |         10 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\tableMergeSort.js    | JavaScript |        123 |         20 |         27 |        170 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\tablePagination.js   | JavaScript |         95 |         20 |          9 |        124 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Javascript\test.js              | JavaScript |         36 |         18 |          0 |         54 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert.php   | PHP        |        -66 |         -2 |         -6 |        -74 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\1.php | PHP        |       -131 |         -2 |         -8 |       -141 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\2.php | PHP        |       -124 |         -2 |         -9 |       -135 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\3.php | PHP        |          0 |          0 |         -1 |         -1 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\CreateConcert\4.php | PHP        |          0 |          0 |         -1 |         -1 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\Dashboard.php       | PHP        |       -555 |         -7 |        -20 |       -582 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\MyEvents.php        | PHP        |       -361 |        -15 |        -26 |       -402 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\Admin\MyOrders.php        | PHP        |       -383 |        -10 |        -23 |       -416 |
+| c:\xampp\htdocs\ComputerScienceNEA\RootFolder\Pages\login.php                 | PHP        |       -112 |          0 |        -15 |       -127 |
+| Total                                                                         |            |     -1,400 |         39 |        -50 |     -1,411 |
++-------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

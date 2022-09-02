@@ -1,5 +1,5 @@
 //Making sure that the date of birth is before the current date
-function GetCurrentDate() {
+export function GetCurrentDate() {
     var today = new Date();
     var date = today.getDate();
     var month = today.getMonth()+1;
@@ -13,6 +13,3 @@ function GetCurrentDate() {
     today = year+'-'+month+'-'+date;
     return today;
 }
-
-today = GetCurrentDate()
-document.getElementById("dateofbirth").setAttribute("max", today);

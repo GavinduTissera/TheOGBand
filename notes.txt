@@ -13,10 +13,11 @@ DONE 2. Create the limiters for the overview tab on main menu (dashboard.php lin
     DONE a. Write new queries for the database depending on what limiters are used, and if its custom or not
 3. Create a My Orders Tab
     a. It should have all orders on them, with pagination and also searching features. There should also be a selector at the top to display how many items are shown at once on the page
-    b. The rows should also change colour depending on their order status (green for Completed, yellow for waiting and red for refunded)
+    DONE b. The rows should also change colour depending on their order status (green for Completed, yellow for waiting and red for refunded)
+6. Create the create event screen (create concert folder)
 4. Create the latest orders tab on the dashboard
 5. Create a search bar for the my events tab so they can search through the events
-6. Create the create event screen (create concert folder)
+
 7. Create error messages for the login page
 8. Add a new optional field, country of residence, to the signup page and then use that information to create a map using jvectormap
     a. Create a new database with countries and amount of people
