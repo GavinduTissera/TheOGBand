@@ -107,10 +107,10 @@
                             </div>
                             <div class="TimeSubmission">
                                 <div class="TimePickerDropdown">
-                                    <select name="HoursSelect" class="TimePickerSelect" id="HoursSelectStart" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                                    <select name="StartHoursSelect" class="TimePickerSelect" id="HoursSelectStart" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
                                     </select>
                                     <div class="TimeColon">:</div>
-                                    <select name="MinutesSelect" class="TimePickerSelect" id="MinutesSelectStart" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                                    <select name="StartMinutesSelect" class="TimePickerSelect" id="MinutesSelectStart" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
                                     </select>
                                 </div>
                             </div>
@@ -122,14 +122,14 @@
                                     <h4 class="StartDate">End Date:</h4>
                                     <h6 class="requiredStar">*</h6>
                                 </label>
-                                <input type="date" name="ConcertStartDateInput" id="ConcertStartTimeInput" min="" required>
+                                <input type="date" name="ConcertEndDateInput" id="ConcertStartTimeInput" min="" required>
                             </div>
                             <div class="TimeSubmission">
                                 <div class="TimePickerDropdown">
-                                    <select name="HoursSelect" class="TimePickerSelect" id="HoursSelectEnd" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                                    <select name="EndHoursSelect" class="TimePickerSelect" id="HoursSelectEnd" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
                                     </select>
                                     <div class="TimeColon">:</div>
-                                    <select name="MinutesSelect" class="TimePickerSelect" id="MinutesSelectEnd" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
+                                    <select name="EndMinutesSelect" class="TimePickerSelect" id="MinutesSelectEnd" onfocus="this.size=10;" onblur="this.size=1;" onchange="this.size=1; this.blur();">
                                     </select>
                                 </div>
                             </div>
