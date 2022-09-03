@@ -89,10 +89,10 @@ li a{
     top: 100px;
     left: 740px;
     font-family: MontHeavy;
-    font-size: 40px;
+    font-size: 30px;
     background-image: var(--peachGradientFaded);
-    width: 500px;
-    height: 100px;
+    width: 400px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,9 +162,15 @@ textarea {
     transition: 0.3s;
 }
 
+
+
 .ConcertDescription:hover .Tooltiptext {
     opacity: 1;
     top: 25px;
+}
+
+.OneLineSubmission, .LongTextSubmission{
+    padding: 0 40px 40px;
 }
 
 .DateSubmission input[type="date"], .TimeSubmission input {
@@ -184,6 +190,8 @@ textarea {
     align-items: center;
     width: 200px;
 }
+
+
 
 
 

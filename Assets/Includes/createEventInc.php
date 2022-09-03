@@ -22,5 +22,5 @@ if(isset($_POST["submitPageTwo"])) {
     $endDateTimeStr = sprintf("%s %s:%s", $endDate, $endHours, $endMinutes);
     $timeFormat = strtotime($endDateTimeStr);
     $_SESSION["TempConcertEndDate"] = date("Y-m-d H:i:s", $timeFormat);
-    header("location: ../../Pages/Admin/CreateConcert/3.php");
+    // header("location: ../../Pages/Admin/CreateConcert/3.php");
 }
