@@ -87,7 +87,7 @@ li a{
 .CreateConcertTitle {
     position: absolute;
     top: 100px;
-    left: 740px;
+    left: 840px;
     font-family: MontHeavy;
     font-size: 30px;
     background-image: var(--peachGradientFaded);
@@ -162,7 +162,9 @@ textarea {
     transition: 0.3s;
 }
 
-
+.OneLineSubmission.half input{
+    width: 100%;
+}
 
 .ConcertDescription:hover .Tooltiptext {
     opacity: 1;
@@ -190,6 +192,19 @@ textarea {
     align-items: center;
     width: 200px;
 }
+
+.SeperatorBar {
+    position: absolute;
+    left: 550px;
+    width: 0px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradientFaded) border-box;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    height: 120px;
+}
+
+
 
 
 

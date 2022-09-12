@@ -6,6 +6,7 @@
         header("location: ../../../Pages/login.php?error=InvalidPermissions");
     }
     include "../../../Assets/Includes/adminDashboardInc.php";
+    include_once "../../../Assets/Includes/returnvenuesInc.php";
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +20,7 @@
     <link rel="stylesheet" href="../../../CSS/PagesCSS/createconcert.css">
     <link rel="stylesheet" href="../../../CSS/PagesCSS/createConcertPages/concert3.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script type="module" src="./../../../Javascript/adminmaps.js"></script>
     <script src="https://kit.fontawesome.com/62b71b12cb.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <!-- === Link to javascript === -->
@@ -94,39 +96,115 @@
         <h2 class="CreateConcertTitle">LOCATION</h1>
         <div class="MainForm">
             <form action="../../../Assets/Includes/createEventInc.php" method="post">
-            <div class="FormInformation">
-                    <h3 class="shortDescription"> Set the name and description of your concert</h3>
-                    <div class="OneLineSubmission">
-                        <label for="ConcertNameInput" class="FormText">
-                            <h4 class="ConcertName">What is the name of your concert? </h4>
-                            <h6 class="requiredStar">*</h6>
-                        </label>
-                        <input type="text" name="ConcertNameInput" id="ConcertNameInput" value="<?php
-                        if(isset($_SESSION["TempConcertName"])){
-                            echo $_SESSION["TempConcertName"]; 
-                        };?>" required>
+                <div class="FormInformation">
+                    <h3 class="shortDescription"> Do you want to...</h3>
+                    <div class="SelectOption">
+                        <div class="AddNewVenue Option">
+                            <button type="button" id="AddNewVenueButton" class="AddNewVenue Button deselected">
+                                ADD NEW VENUE
+                            </button>
+                        </div>
+                        <div class="SeperatorBar deselected" id="SeperatorBar"></div>
+                        <div class="UseExistingVenue Option">
+                            <button type="button" id="UseExistingVenueButton" class="UseExistingVenue Button deselected">
+                                USE EXISTING VENUE
+                            </button>
+                        </div>
                     </div>
-                    <div class="LongTextSubmission ">
-                        <label for="ConcertDescriptionInput" class="FormText">
-                            <h4 class="ConcertDescription">
-                                <div class="tooltip">
-                                    Give a description of your concert. 
-                                    <h5 class="Tooltiptext">This information will be shown to users on the events screen</h5>
-                                </div>
-                            </h4>
-                            <h6 class="requiredStar">*</h6>
-                        </label>
-                        <textarea name="ConcertDescriptionInput" id="ConcertDescriptionInput" cols="130" rows="5" required><?php
-                        if(isset($_SESSION["TempConcertDescription"])){
-                            echo $_SESSION["TempConcertDescription"]; 
-                        };?></textarea>
+                    <div class="AddNewVenueContent hide" id="AddNewVenue">
+                        <div class="OneLineSubmission">
+                            <h4 class="errorMessage hide" id="errorMessage">The place you searched for doesn't exist</h4>
+                            <label for="addressInput" class="FormText">
+                                <h4 class="VenueAddressName">What is the address of your venue?</h4>
+                                <h6 class="requiredStar">*</h6>
+                            </label>
+                            <input type="text" name="addressInput" id="addressInput" class="addressInput" placeholder="Enter a location" required>
+                        </div>
+                        <div class="OneLineSubmissions">
+                            <div class="OneLineSubmission half submissionOne">
+                                <label for="VenueNameInput" class="FormText">
+                                    <h4 class="VenueName">What is the name of your venue?</h4>
+                                    <h6 class="requiredStar">*</h6>
+                                </label>
+                                <input type="text" name="nameInput" id="VenueNameInput" class="VenueNameInput" value="" placeholder="Enter a name" required>
+                            </div>
+                            <div class="SeperatorBar"></div>
+                            <div class="OneLineSubmission half">
+                                <label for="MaxCapacityInput" class="FormText">
+                                    <h4 class="MaxCapacity">What is the capacity of your venue?</h4>
+                                    <h6 class="requiredStar">*</h6>
+                                </label>
+                                <input type="number" name="MaxCapacity" id="MaxCapacityInput" class="MaxCapacityInput" value="" placeholder="Enter a number" required>
+                            </div>
+                        </div>
+                        
+                        <div id="GoogleMapsVenue" class="GoogleMapsVenue"></div>
+                        <div id="infowindowContent">
+                            <span id="place-name" class="placeName title"></span><br>
+                            <span id="place-address" class="placeAddress "></span>
+                        </div>
+                        <div class="DatabaseData hide">
+                            <input type="text" name="locationData" id="locationData" class="locationData" value="" required>
+                        </div>
+                        <button class="SubmitButton" id="SubmitButton" type="submit" name="submitPageThreeAddNew">
+                            <span class="submitting">
+                                SUBMIT
+                            </span>  
+                        </button>
                     </div>
-                    <div class="AutosaveMessage"></div>
-                    <button class="SubmitButton" type="submit" name="submitPageOne">
-                        <span class="submitting">
-                            SUBMIT
-                        </span>  
-                    </button>
+                    <div class="UseExistingVenueContent One hide" id="UseExistingVenue">
+                        <div class="OneLineSubmission">
+                            <h4 class="errorMessage hide" id="errorMessage">The place you searched for doesn't exist. Try to add a new venue.</h4>
+                            <label for="VenueNameInputSearch" class="FormText">
+                                <h4 class="VenueAddressName">Enter a venue name</h4>
+                                <h6 class="requiredStar">*</h6>
+                            </label>
+                            <input type="text" name="VenueNameInputSearch" id="VenueNameInputSearch" class="VenueNameInputSearch" placeholder="Venue name" required>
+                        </div>
+                        <div class="VenueNameList">
+                            <ul class="VenueNames" id="VenueNames">
+                                <?php
+                                    include_once "../../../Assets/Includes/CreateConcertVenueList/AllVenues.php";
+                                ?>
+                                
+                            </ul>
+                        </div>
+                        <div class="VenueTable">
+                            <table class="VenueInformationTable hide">
+                                <thead>
+                                    <tr class="row1">
+                                        <th class="ID smallSize headerTable none" id="0">
+                                            <div class="ColumnID ColumnBox">
+                                                <div class="tooltip">
+                                                    Venue ID
+                                                    <h5 class="Tooltiptext">Unique Identification for every venue</h5>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <th class="EventNames headerTable none" id="1">
+                                            <div class="ColumnID ColumnBox">
+                                                Venue Name
+                                            </div>
+                                        </th>
+                                        <th class="TicketName1 longSize headerTable none" id="2">
+                                            <div class="ColumnID ColumnBox">
+                                                Address
+                                            </div>
+                                        </th>
+                                        <th class="TicketsBought smallSize headerTable none" id="3">
+                                            <div class="ColumnID ColumnBox">
+                                                Max Capacity
+                                            </div>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th id="demo"></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    
                     <div class="BottomText">
                         <div class="FormText">
                             <h6 class="requiredStar">* </h6>
@@ -139,7 +217,10 @@
             </form>
         </div>
     </main>
-    <script type="module">
-    </script>
+    <!-- This script introduces the google maps api with places library enabled -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEC7ZFii8nU71mliEGeU8YhoclN8eoJgs&callback=initMap&libraries=places" defer></script>
+    <script src="../../../Javascript/CreateConcertButtons.js"></script>
+    <script src="../../../Javascript/listLinearSearch.js"></script>
+    <script src="../../../Javascript/displayVenueOnClick.js"></script>
 </body>
 </html>

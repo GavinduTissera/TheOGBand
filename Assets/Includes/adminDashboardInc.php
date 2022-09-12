@@ -111,7 +111,6 @@ if ($_SESSION["userisadmin"] === 1) {
     }
 
     if(isset($_POST["TimeButtonsSLW"])) {
-        echo "yes";
         if ($_SESSION["ShowLastWeek"] === false) {
             $_SESSION["ShowLastWeek"] = true;
             //Only 1 button can be selected at a time so the rest of the buttons return as false

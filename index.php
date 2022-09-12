@@ -118,9 +118,9 @@
                 <div class="MusicContent">
                     <h3 class="header Music">MUSIC</h3>
                     <div class="SpotifyPlaylists">
-                        <iframe class="PlaylistOne" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2k9WGCD9GxTUsdYtIDnZhG?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                        <iframe class="PlaylistTwo" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0E9XMGembJo?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                        <iframe class="PlaylistThree" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWEcRhUVtL8n?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        <iframe class="PlaylistOne" title="PlaylistOne" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2k9WGCD9GxTUsdYtIDnZhG?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        <iframe class="PlaylistTwo" title="PlaylistTwo" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0E9XMGembJo?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                        <iframe class="PlaylistThree" title="PlaylistThree" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWEcRhUVtL8n?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                     </div>
                 </div>
                 

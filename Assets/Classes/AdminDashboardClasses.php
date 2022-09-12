@@ -175,9 +175,9 @@ class OrderController extends dbConnector
         $assocArraykeys = $this->ReturnAssocArray($queryStatement);
         $keys = $assocArraykeys[0];
         $userArray = $assocArraykeys[1];
+        $_SESSION["Orders.TotalOrders"] = count($keys);
         //Iterating through the associative array and storing them in session variables. They are also ordered through their rows in the database
         for ($i=0; $i < count($keys); $i++) { 
-            $_SESSION["Orders.TotalOrders"] = count($keys);
             $_SESSION["Orders.OrderID".$i] = $userArray[$i]["OrderID"];
             $_SESSION["Orders.EventName".$i] = $userArray[$i]["EventName"];
             $_SESSION["Orders.TicketName".$i] = $userArray[$i]["TicketName"];
@@ -241,9 +241,9 @@ class EventsController extends dbConnector
         $assocArraykeys = $this->ReturnAssocArray($queryStatement);
         $keys = $assocArraykeys[0];
         $userArray = $assocArraykeys[1];
+        $_SESSION["Events.TotalEvents"] = count($keys);
         //Iterating through the associative array and storing them in session variables. They are also ordered through their rows in the database, from 0 to 4
         for ($i=0; $i < count($keys); $i++) { 
-            $_SESSION["Events.TotalEvents"] = count($keys);
             $_SESSION["Events.EventID".$i] = $userArray[$i]["EventID"];
             $_SESSION["Events.VenueID".$i] = $userArray[$i]["VenueID"];
             $_SESSION["Events.EventName".$i] = $userArray[$i]["EventName"];
@@ -257,11 +257,8 @@ class EventsController extends dbConnector
             $_SESSION["Events.TotalTicketsBought".$i] = $userArray[$i]["TotalTicketsBought"];
             $_SESSION["Events-Venue.MaxCapacity".$i] = $userArray[$i]["MaxCapacity"];      
             $_SESSION["Events-Venue.VenueName".$i] = $userArray[$i]["VenueName"];  
-            $_SESSION["Events-Venue.City".$i] = $userArray[$i]["City"]; 
-            $_SESSION["Events-Venue.Address".$i] = $userArray[$i]["Address"];  
-            $_SESSION["Events-Venue.Postcode".$i] = $userArray[$i]["Postcode"]; 
-            $_SESSION["Events-Venue.Latitude".$i] = $userArray[$i]["Latitude"];
-            $_SESSION["Events-Venue.Longitude".$i] = $userArray[$i]["Longitude"];
+            $_SESSION["Events-Venue.Address".$i] = $userArray[$i]["Address"];   
+            $_SESSION["Events-Venue.LocationData".$i] = $userArray[$i]["LocationData"];
         }   
     }
 
@@ -278,9 +275,9 @@ class EventsController extends dbConnector
         $assocArraykeys = $this->ReturnAssocArray($queryStatement);
         $keys = $assocArraykeys[0];
         $userArray = $assocArraykeys[1];
+        $_SESSION["Events.AllTotalEvents"] = count($keys);
         //Iterating through the associative array and storing them in session variables. They are also ordered through their rows in the database
         for ($i=0; $i < count($keys); $i++) { 
-            $_SESSION["Events.AllTotalEvents"] = count($keys);
             $_SESSION["Events.AllEventID".$i] = $userArray[$i]["EventID"];
             $_SESSION["Events.AllVenueID".$i] = $userArray[$i]["VenueID"];
             $_SESSION["Events.AllEventName".$i] = $userArray[$i]["EventName"];
@@ -293,11 +290,8 @@ class EventsController extends dbConnector
             $_SESSION["Events.AllTotalTicketsBought".$i] = $userArray[$i]["TotalTicketsBought"];
             $_SESSION["Events-AllVenue.MaxCapacity".$i] = $userArray[$i]["MaxCapacity"];      
             $_SESSION["Events-AllVenue.VenueName".$i] = $userArray[$i]["VenueName"];  
-            $_SESSION["Events-AllVenue.City".$i] = $userArray[$i]["City"]; 
-            $_SESSION["Events-AllVenue.Address".$i] = $userArray[$i]["Address"];  
-            $_SESSION["Events-AllVenue.Postcode".$i] = $userArray[$i]["Postcode"]; 
-            $_SESSION["Events-AllVenue.Latitude".$i] = $userArray[$i]["Latitude"];
-            $_SESSION["Events-AllVenue.Longitude".$i] = $userArray[$i]["Longitude"];
+            $_SESSION["Events-AllVenue.Address".$i] = $userArray[$i]["Address"];   
+            $_SESSION["Events-AllVenue.LocationData".$i] = $userArray[$i]["LocationData"];
         }   
     }
 }
@@ -335,9 +329,9 @@ class CustomEventsDates extends dbConnector
         if (count($keys) === 0) {
             $_SESSION["Events.AllTotalEvents"] = 0;
         } else {
+            $_SESSION["Events.AllTotalEvents"] = count($keys);
             for ($i=0; $i < count($keys); $i++) { 
                 //Iterating through the associative array and storing them in session variables. They are also ordered through their rows in the database
-                $_SESSION["Events.AllTotalEvents"] = count($keys);
                 $_SESSION["Events.AllEventID".$i] = $userArray[$i]["EventID"];
                 $_SESSION["Events.AllVenueID".$i] = $userArray[$i]["VenueID"];
                 $_SESSION["Events.AllEventName".$i] = $userArray[$i]["EventName"];
@@ -350,11 +344,8 @@ class CustomEventsDates extends dbConnector
                 $_SESSION["Events.AllTotalTicketsBought".$i] = $userArray[$i]["TotalTicketsBought"];
                 $_SESSION["Events-AllVenue.MaxCapacity".$i] = $userArray[$i]["MaxCapacity"];      
                 $_SESSION["Events-AllVenue.VenueName".$i] = $userArray[$i]["VenueName"];  
-                $_SESSION["Events-AllVenue.City".$i] = $userArray[$i]["City"]; 
-                $_SESSION["Events-AllVenue.Address".$i] = $userArray[$i]["Address"];  
-                $_SESSION["Events-AllVenue.Postcode".$i] = $userArray[$i]["Postcode"]; 
-                $_SESSION["Events-AllVenue.Latitude".$i] = $userArray[$i]["Latitude"];
-                $_SESSION["Events-AllVenue.Longitude".$i] = $userArray[$i]["Longitude"];
+                $_SESSION["Events-AllVenue.Address".$i] = $userArray[$i]["Address"];   
+                $_SESSION["Events-AllVenue.LocationData".$i] = $userArray[$i]["LocationData"];
             }
         }       
     }

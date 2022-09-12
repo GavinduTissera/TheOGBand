@@ -1,5 +1,3 @@
-
-
 <?php
     if ($_SESSION["Events.AllTotalEvents"] > 0) {
         for ($i=0; $i < $_SESSION["Events.AllTotalEvents"]; $i++) {

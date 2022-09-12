@@ -43,6 +43,19 @@ class mergeSort {
         return temp
     }
 
+    // Creates a 2d array of the full column by iterating through the total number of rows (minus the header) and for each row, forming key (numbers going up to number of rows) and value (the table data) pairs.
+    createFullArr() {
+        let Arr = []
+        for (let i = 1; i <= this.getNoOfRows(); i++) {
+            var temp = this.getRowFromRows(i).getElementsByTagName("TD")[this.getColumn()];
+            let temparr = [i, temp];
+            Arr.push(temparr)
+        };
+        console.log(Arr)
+        // After the array for the column is formed, it starts the recursive process of splitting the arrays
+        return this.sliceAndSort(Arr)
+    }
+
     // Uses recursion to split the main array into arrays of size 1,continuously halving them from the midpoint and then calls mergeArrays which puts them back together in the correct order
     sliceAndSort(columnArr) {
         var firstArr = []
@@ -55,19 +68,6 @@ class mergeSort {
         firstArr = this.sliceAndSort(columnArr.slice(0, midpoint))
         secondArr = this.sliceAndSort(columnArr.slice(midpoint))
         return this.mergeArrays(firstArr, secondArr)
-    }
-
-    // Creates a 2d array of the full column by iterating through the total number of rows (minus the header) and for each row, forming key (numbers going up to number of rows) and value (the table data) pairs.
-    createFullArr() {
-        let Arr = []
-        for (let i = 1; i <= this.getNoOfRows(); i++) {
-            var temp = this.getRowFromRows(i).getElementsByTagName("TD")[this.getColumn()];
-            let temparr = [i, temp];
-            Arr.push(temparr)
-        };
-        console.log(Arr)
-        // After the array for the column is formed, it starts the recursive process of splitting the arrays
-        return this.sliceAndSort(Arr)
     }
 
     // If the innerHTML isn't a number, it checks what direction the sort is meant to be in, compares the values inside the arrays and then removes the value from the smaller/bigger array and returns it along with the new arrays

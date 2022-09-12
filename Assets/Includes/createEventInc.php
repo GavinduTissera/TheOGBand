@@ -22,5 +22,17 @@ if(isset($_POST["submitPageTwo"])) {
     $endDateTimeStr = sprintf("%s %s:%s", $endDate, $endHours, $endMinutes);
     $timeFormat = strtotime($endDateTimeStr);
     $_SESSION["TempConcertEndDate"] = date("Y-m-d H:i:s", $timeFormat);
-    // header("location: ../../Pages/Admin/CreateConcert/3.php");
+    header("location: ../../Pages/Admin/CreateConcert/3.php");
+}
+
+if (isset($_POST["submitPageThreeAddNew"])) {
+    $addressInput = ($_POST["addressInput"]);
+    $venueNameInput = ($_POST["nameInput"]);
+    $maxCapacityInput = ($_POST["MaxCapacity"]);
+    $locationDataInput = ($_POST["locationData"]);
+    $_SESSION["TempMaxCapacity"] = $maxCapacityInput;
+    $_SESSION["TempVenueName"] = $venueNameInput;
+    $_SESSION["TempAddress"] = $addressInput;
+    $_SESSION["TempLocationData"] = $locationDataInput;
+    header("location: ../../Pages/Admin/CreateConcert/4.php");
 }
