@@ -42,5 +42,5 @@ $test->VenueMaxCapacity = $VenueMaxCapacity;
 $test->VenueName = $VenueName;
 $test->VenueAddress = $VenueAddress;
 $test->VenueLocationData = $VenueLocationData;
-$venueJSON = json_encode($test);
-echo $venueJSON;
+echo json_encode($test);
+

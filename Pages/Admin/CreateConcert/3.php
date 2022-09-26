@@ -6,7 +6,6 @@
         header("location: ../../../Pages/login.php?error=InvalidPermissions");
     }
     include "../../../Assets/Includes/adminDashboardInc.php";
-    include_once "../../../Assets/Includes/returnvenuesInc.php";
 ?>
 
 <!DOCTYPE html>
@@ -95,8 +94,8 @@
         <!-- MAIN CONTENT -->
         <h2 class="CreateConcertTitle">LOCATION</h1>
         <div class="MainForm">
-            <form action="../../../Assets/Includes/createEventInc.php" method="post">
-                <div class="FormInformation">
+            <div class="FormInformation">
+                <form action="../../../Assets/Includes/createEventInc.php" method="post">
                     <h3 class="shortDescription"> Do you want to...</h3>
                     <div class="SelectOption">
                         <div class="AddNewVenue Option">
@@ -152,23 +151,21 @@
                             </span>  
                         </button>
                     </div>
+                </form>
+                <form action="../../../Assets/Includes/createEventInc.php" method="post">
                     <div class="UseExistingVenueContent One hide" id="UseExistingVenue">
                         <div class="OneLineSubmission">
                             <h4 class="errorMessage hide" id="errorMessage">The place you searched for doesn't exist. Try to add a new venue.</h4>
                             <label for="VenueNameInputSearch" class="FormText">
-                                <h4 class="VenueAddressName">Enter a venue name</h4>
-                                <h6 class="requiredStar">*</h6>
+                                <h4 class="VenueAddressName">Enter a venue name, and click on a venue from the dropdown to show more information</h4>
                             </label>
-                            <input type="text" name="VenueNameInputSearch" id="VenueNameInputSearch" class="VenueNameInputSearch" placeholder="Venue name" required>
+                            <input type="text" name="VenueNameInputSearch" id="VenueNameInputSearch" class="VenueNameInputSearch" placeholder="Venue name">
                         </div>
                         <div class="VenueNameList">
-                            <ul class="VenueNames" id="VenueNames">
-                                <?php
-                                    include_once "../../../Assets/Includes/CreateConcertVenueList/AllVenues.php";
-                                ?>
-                                
-                            </ul>
+                            <!-- The venue rows are going to be placed here -->
+                            <ul class="VenueNames" id="VenueNames"></ul>
                         </div>
+                        <h3 class="HeaderVenueInformation">VENUE INFORMATION</h3>
                         <div class="VenueTable">
                             <table class="VenueInformationTable hide">
                                 <thead>
@@ -198,11 +195,22 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th id="demo"></th>
+                                        <th id="VenueIDOutput"></th>
+                                        <th id="VenueNameOutput"></th>
+                                        <th id="VenueAddressOutput"></th>
+                                        <th id="VenueMaxCapacityOutput"></th>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
+                        <div class="DatabaseData hide">
+                            <input type="text" name="venueID" id="venueID" class="venueID" value="" required>
+                        </div>
+                        <button class="SubmitButton hide" id="SubmitButtonTwo" type="submit" name="submitPageThreeUseExisting">
+                            <span class="submitting">
+                                SUBMIT
+                            </span>  
+                        </button>
                     </div>
                     
                     <div class="BottomText">
@@ -219,8 +227,9 @@
     </main>
     <!-- This script introduces the google maps api with places library enabled -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEC7ZFii8nU71mliEGeU8YhoclN8eoJgs&callback=initMap&libraries=places" defer></script>
+    <script src="../../../Javascript/displayVenueOnClick.js"></script>
     <script src="../../../Javascript/CreateConcertButtons.js"></script>
     <script src="../../../Javascript/listLinearSearch.js"></script>
-    <script src="../../../Javascript/displayVenueOnClick.js"></script>
+    
 </body>
 </html>

@@ -295,7 +295,7 @@
                                     <h4 class="EventVenueNameCity">
                                         <i class="uil uil-location-pin-alt"></i>
                                         <?php
-                                            echo $_SESSION["Events-Venue.VenueName".$i].", ". $_SESSION["Events-Venue.City".$i];
+                                            echo $_SESSION["Events-Venue.VenueName".$i];
                                         ?>
                                     </h4>
                                 </div>

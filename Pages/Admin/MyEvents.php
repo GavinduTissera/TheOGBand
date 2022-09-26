@@ -274,11 +274,11 @@
                                     <i class="uil uil-sort-amount-down notshown"></i>
                                 </div>
                             </th>
-                            <th class="Postcode headerTable none" id="10">
+                            <th class="LocationData headerTable none" id="10">
                                 <div class="ColumnID ColumnBox">
                                     <div class="tooltip">
-                                        Postcode
-                                        <h5 class="Tooltiptext last">Venue Postcode</h5>
+                                        Location Data
+                                        <h5 class="Tooltiptext last">This is the latitude and the longitude of the venue. Used to show the exact location on google maps when the user views the venue</h5>
                                     </div>
                                     <i class="uil uil-sort shown"></i>
                                     <i class="uil uil-sort-amount-up notshown"></i>
@@ -294,20 +294,6 @@
                         include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
                         $_SESSION["UpdateEventsTable"] = false;
                     }
-                    
-                        // // in adminDashboardInc it makes these session variables have a value of true or false. These are then checked here and changes what events are shown based on what is true. Each one is stored in a seperate file for ease of reading
-                        // if ($_SESSION["HidePastEvents"] === true) {
-                        //     include_once "../../Assets/Includes/MyEventsTables/HidePastEvents.php";
-                        // } elseif ($_SESSION["HideFutureEvents"] === true) {
-                        //     include_once "../../Assets/Includes/MyEventsTables/HideFutureEvents.php";
-                        // } elseif ($_SESSION["ShowAllEvents"] === true){
-                            
-                        // } elseif ($_SESSION["ShowCustomEvents"] === true){
-                        //     include_once "../../Assets/Includes/MyEventsTables/ShowCustomEvents.php";
-                        // } else {
-                        //     $_SESSION["ShowAllEvents"] = true;
-                        //     include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
-                        // }
 
                     ?>
                     

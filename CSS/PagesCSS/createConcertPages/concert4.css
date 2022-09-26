@@ -1,0 +1,234 @@
+.Bar {
+    background-image: var(--peachGradient);
+    border-radius: 10px;
+    width: 89.5%;
+    height: 100%;
+    animation-name: ProgressBarLoad;
+    animation-duration: 4s;
+    animation-timing-function: ease;
+}
+
+
+@keyframes ProgressBarLoad {
+    0% {
+        width: 66.5%;
+    }
+    100% {
+        width: 89.5%;
+    }
+}
+
+
+.TopBar .Basics, .TopBar .DateTime, .TopBar .Location {
+    background-image: var(--peachGradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.FormInformation input{
+    font-family: Montserrat;
+    width: 90%;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 20px;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 30px;
+    text-overflow: ellipsis;
+}
+
+.hide {
+    display: none;
+}
+
+
+.AddNewTicketType, .SubmitTicket {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+    transition: 2s;
+}
+
+.AddNewTicketType .Button, .SubmitTicket .Button{
+    position: relative;
+    font-family: MontLight;
+    height: 50px;
+    width: 480px;
+    left: 0;
+    top: 0;
+    margin: 20px 100px;
+    background: var(--peachGradient);
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.733);
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: 800;
+    opacity: 1;
+    transition: 2s;
+}
+
+.MaxCapacityInput {
+    width: 380px;
+}
+
+.SubmitTicket .Button {
+    width: 350px;
+}
+
+.CreatedTicketsHeader, .AddNewTicketHeader {
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.AddNewTicketHeader {
+    padding-top: 30px;
+}
+
+.NoneCreatedAlert.show {
+    width: 50%;
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 30px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto 10px;
+}
+
+.PoundSymbol {
+    font-size: 30px;
+    margin-right: -5px;
+}
+
+.CurrencyInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip {
+    border-bottom: 1px dotted var(--lightBlue);
+}
+
+.tooltip .Tooltiptext {
+    width: 350px;
+    top: -56px;
+    margin-left: -140px;
+}
+
+.FormText:hover .Tooltiptext {
+    opacity: 1;
+    top: 25px;
+}
+
+.LongTextSubmission {
+    margin: 0 auto;
+}
+
+textarea {
+    background: linear-gradient(var(--darkGrey), var(--darkGrey)) padding-box,
+                var(--peachGradient) border-box;
+    border: 5px solid transparent;
+    border-radius: 30px;
+    width: 90%;
+    padding: 15px;
+    margin: 0 auto;
+    position: relative;
+    left: 15px;
+}
+
+.TicketHeaders.show {
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: var(--lightGreyBlue);
+    border-radius: 20px;
+}
+
+.TicketHeaders.show .TicketID {
+    position: relative;
+    left: -50px;
+}
+
+.TicketHeaders.show .TicketName {
+    position: relative;
+    left: -30px;
+}
+
+.TicketElement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    margin: 0 auto;
+
+}
+
+.TicketElement .TicketTypeNumber {
+    position: absolute;
+    width: 30px;
+    left: 70px;
+}
+
+.TicketElement .TicketNameDiv {
+    position: absolute;
+    width: 200px;
+    text-align: center;
+    left: 185px;
+}
+
+.TicketElement .TicketAmount {
+    position: absolute;
+    width: 120px;
+    text-align: center;
+    left: 470px;
+}
+
+.TicketElement .TicketPrice {
+    position: absolute;
+    width: 120px;
+    text-align: center;
+    left: 678px;
+}
+
+.TicketElement .CopyTicket, .TicketElement .DeleteTicket {
+    position: absolute;
+    width: 50px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.TicketElement .CopyTicket {
+    left: 890px;
+}
+
+.TicketElement .DeleteTicket {
+    left: 940px;
+}
+
+
+.ActiveTickets div{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.SubmitButton {
+    position: relative;
+    width: 400px;
+    top: -20px;
+    left: 660px;
+}

@@ -88,7 +88,6 @@ class SignupController extends SignupQuery {
         
         session_start();
         $_SESSION["userid"] = $userArray[0]["userID"];
-        echo "userid";
         $_SESSION["useremail"] = $userArray[0]["userEmail"];
         $_SESSION["userfirstname"] = $userArray[0]["userFirstName"];
         $_SESSION["userpassword"] = $userArray[0]["userPassword"];

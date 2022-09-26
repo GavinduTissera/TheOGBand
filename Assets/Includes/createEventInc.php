@@ -26,13 +26,22 @@ if(isset($_POST["submitPageTwo"])) {
 }
 
 if (isset($_POST["submitPageThreeAddNew"])) {
-    $addressInput = ($_POST["addressInput"]);
-    $venueNameInput = ($_POST["nameInput"]);
-    $maxCapacityInput = ($_POST["MaxCapacity"]);
-    $locationDataInput = ($_POST["locationData"]);
-    $_SESSION["TempMaxCapacity"] = $maxCapacityInput;
-    $_SESSION["TempVenueName"] = $venueNameInput;
-    $_SESSION["TempAddress"] = $addressInput;
-    $_SESSION["TempLocationData"] = $locationDataInput;
+    $_SESSION["IsNewVenue"] = true;
+    $_SESSION["TempMaxCapacity"] = ($_POST["MaxCapacity"]);
+    $_SESSION["TempVenueName"] = ($_POST["nameInput"]);
+    $_SESSION["TempAddress"] = ($_POST["addressInput"]);
+    $_SESSION["TempLocationData"] = ($_POST["locationData"]);
     header("location: ../../Pages/Admin/CreateConcert/4.php");
+}
+
+if (isset($_POST["submitPageThreeUseExisting"])) {
+    $venueID = ($_POST["venueID"]);
+    $_SESSION["TempVenueID"] = $venueID;
+    header("location: ../../Pages/Admin/CreateConcert/4.php");
+}
+
+if (isset($_POST["submitPageFour"])) {
+    // gets the raw body of http request
+    $decodedContents = json_decode($_POST["TicketObjects"], true);
+    var_dump($decodedContents);
 }

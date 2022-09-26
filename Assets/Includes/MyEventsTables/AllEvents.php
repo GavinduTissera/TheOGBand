@@ -58,7 +58,7 @@
                 </td>
                 <td>
                     <?php
-                        echo $_SESSION["Events-AllVenue.Postcode".$i];
+                        echo $_SESSION["Events-AllVenue.LocationData".$i];
                     ?>
                 </td>
             </tr>
