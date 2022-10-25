@@ -13,6 +13,7 @@ var DeleteTickets = document.querySelectorAll(".DeleteTicket")
 
 //Putting a count to see how many tickets have been created
 var count = 0
+var ticketCapacity = 0
 var value = Object
 var TicketArray = []
 console.log(SubmitButton)
@@ -55,6 +56,7 @@ SubmitButton.addEventListener("click", function() {
         CopyTickets = document.querySelectorAll(".CopyTicket")
         DeleteTickets = document.querySelectorAll(".DeleteTicket")
         console.log(value)
+        
     }
     
 })

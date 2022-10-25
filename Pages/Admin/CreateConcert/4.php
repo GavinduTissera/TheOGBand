@@ -188,7 +188,7 @@
             </div>
         </div>
     </main>
-    <!-- This script introduces the google maps api with places library enabled -->
+    <!-- This script and adds the ticket to the list at the top using JSON -->
     <script src="../../../Javascript/addticket.js"></script>
 </body>
 </html>

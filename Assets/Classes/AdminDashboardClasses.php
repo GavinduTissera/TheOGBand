@@ -23,7 +23,7 @@ class SalesController extends dbConnector
         return $userArray;
     }
 
-    //Uses an aggregate function to 
+    //Uses an aggregate function to select the sum of money taken from order
     public function GetTotalRevenueQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT SUM(TotalPrice) FROM orders WHERE orders.OrderStatus = 'Completed' AND OrderDate >= ? AND OrderDate <= ?;");

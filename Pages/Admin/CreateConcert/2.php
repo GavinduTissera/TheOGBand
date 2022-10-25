@@ -180,6 +180,8 @@
             HourSelectStart.appendChild(element)
             HourSelectEnd.appendChild(element.cloneNode(true))
         });
+
+        
     </script>
 </body>
 </html>
