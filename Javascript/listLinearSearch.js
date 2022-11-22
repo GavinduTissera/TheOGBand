@@ -43,6 +43,7 @@ class LinearSearch {
         return this.#activeListElement;
     }
 
+    //Updates the active list element variable when this is called.
     setActiveListElements() {
         let ActiveList = document.querySelectorAll(".VenueRow.show")
         this.#activeListElement = ActiveList
@@ -86,6 +87,7 @@ class LinearSearch {
                 this.getListFromListElements(i).classList.add("show")
                 this.getSeperatorFromSeperators(i).classList.add("show")
             } else {
+                // If not found, then hides the element and seperator
                 this.getListFromListElements(i).classList.replace("show", "hide")
                 this.getSeperatorFromSeperators(i).classList.replace("show", "hide")
             }
@@ -93,6 +95,7 @@ class LinearSearch {
         }
     }
 
+    // If the length of the venue table is longer than 5, it truncates the table down to the top 5.
     removeExcessListElements(ActLength) {
         if (ActLength > 5) {
             for (let i = 5; i < ActLength; i++) {
@@ -110,15 +113,27 @@ class initiateSearch{
         search.getInputField().addEventListener("input", function() {
             var search = new LinearSearch()
             var newValue = search.getInputValue().toUpperCase()
+            //Searches using the new typed text
             search.searchAlgorithm(newValue)
+            //Refreshes the active list element list. This is done to stop running the code
             search.setActiveListElements()
             var ActiveElementslength = search.getActiveListElements().length
+            //If the active list elements.length is longer than 5, then hide all extra elements
             search.removeExcessListElements(ActiveElementslength)
         })
+        //Starts an event input to remove excess list elements
+        var changeEvent = new Event("input")
+        search.getInputField().dispatchEvent(changeEvent)
     }
 }
+
+//Starts the search as it is called to remove extra list elements
 var inisearch = new initiateSearch
-var search = new LinearSearch
+var search = new LinearSearch()
+var newValue = search.getInputValue().toUpperCase()
+search.searchAlgorithm(newValue)
+search.setActiveListElements()
 var ActiveElementslength = search.getActiveListElements().length
 search.removeExcessListElements(ActiveElementslength)
 inisearch.startSearch()
+

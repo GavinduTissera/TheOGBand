@@ -129,7 +129,7 @@ if ($_SESSION["userisadmin"] !== 1) {
             </div>
             <!-- Actual table that includes the orders -->
             <div class="TableContainer">
-                <!-- The only reason this is called event table is because the merge sort algorithm only works on EventTable -->
+                <!-- The only reason this is called event table is because the merge sort algorithm only works on tables named EventTable -->
                 <table class="EventTable" id="EventTable">
                     <!-- Headers for the table  -->
                     <thead>
@@ -254,48 +254,14 @@ if ($_SESSION["userisadmin"] !== 1) {
                     <tbody>
                         <?php
                         include_once "../../Assets/Includes/MyOrdersTable/AllOrders.php";
-                        for ($i=5; $i < 50; $i++) { 
-                            ?> 
-                            <tr>
-                                <td><?php echo $i ?></td>
-                                <td>Event Name <?php echo $i ?></td>
-                                <td>Ticket Name <?php echo $i ?></td>
-                                <td>3 <?php echo $i ?></td>
-                                <td>
-                                    <?php 
-                                    $random = rand(100,100000) /100;
-                                    echo $random;
-                                    ?>
-                                </td>
-                                <td>2022-08-20 16:35:27</td>
-                                <td>Gav<?php echo $i ?></td>
-                                <td>Tiss<?php echo $i ?></td>
-                                <td>gavtiss@gmail.com<?php echo $i ?></td>
-                                <td>000011101010<?php echo $i ?></td>
-                                <td class="OrderStatusColour">
-                                <?php
-                                $randomtwo = rand(1,3);
-                                if ($randomtwo == 1) {
-                                    echo "Completed";
-                                } else if ($randomtwo == 2) {
-                                    echo "Waiting";
-                                } else {
-                                    echo "Refunded";
-                                }
-                                ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
                         ?>
-
                     </tbody>
                 </table>
             </div>
             <div class="PaginationBox">
                 <nav>
                     <ul class="pagination">
-
+                        <!-- Uses data- elements to for ease of use -->
                         <li data-pagination="start" class="start">
                             <span><<<</span>
                         </li>
@@ -305,7 +271,7 @@ if ($_SESSION["userisadmin"] !== 1) {
                         <div class="DataRows">
 
                         </div>
-                        <!--	Here the JS Function Will Add the Rows -->
+                        <!-- Pagination elements added here-->
                         <li data-pagination="next" class="next">
                             <span>></span> 
                         </li>
@@ -408,8 +374,20 @@ if ($_SESSION["userisadmin"] !== 1) {
                 icons.classList.replace("notshown", "shown")
             })
         }
-    </script>
 
+        // import {
+        //     initiatePagination
+        // } from "../../Javascript/tablePagination.js"
+        // const rowspicker = document.getElementById("rowspicker")
+        // rowspicker.addEventListener("change", function() {
+        //     //getting variables to pass into the pagination class
+        //     var AmountOfRows = parseInt(rowspicker.options[rowspicker.selectedIndex].value)
+        //     var TotalRows = (document.getElementsByTagName("tr").length -1)
+        //     var PagesNeeded = Math.ceil(TotalRows/AmountOfRows)
+        //     var selectedPage = 1
+        //     new initiatePagination(AmountOfRows, TotalRows, PagesNeeded, selectedPage)
+        // })
+    </script>
     <script src="../../Javascript/tablePagination.js"></script>
 </body>
 

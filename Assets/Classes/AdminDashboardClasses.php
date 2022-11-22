@@ -2,18 +2,21 @@
 include "C:/xampp\htdocs\ComputerScienceNEA\RootFolder\Assets\Includes/ini.php";
 include "C:/xampp\htdocs\ComputerScienceNEA\RootFolder\Assets\Classes/CreateArrayCheckQuery.php";
 
-//Inherit from db connector class.
+//Inherit from db connector class. This class gets all the sales information used for dashboard.php
 class SalesController extends dbConnector
 {
+    //Initialising start date and end date variables
     var $startDate;
     var $endDate;
 
+    //Constructor 
     public function __construct($startDate, $endDate)
     {
         $this->startDate = $startDate;
         $this->endDate = $endDate;
     }
 
+    //As startDate and endDate are always being used for the queries, ReturnAssocArray is used to reduce the number of steps needed to be taken to check if executable and generate associative arrays
     protected function ReturnAssocArray($queryStatement)
     {
         $queryStatement->execute([$this->startDate, $this->endDate]);
@@ -23,7 +26,7 @@ class SalesController extends dbConnector
         return $userArray;
     }
 
-    //Uses an aggregate function to select the sum of money taken from order
+    //Uses an aggregate function to select the sum of money taken from order. All of the below functions have parameters for the start date and end date. These are set by adminDashboardInc.php
     public function GetTotalRevenueQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT SUM(TotalPrice) FROM orders WHERE orders.OrderStatus = 'Completed' AND OrderDate >= ? AND OrderDate <= ?;");
@@ -32,6 +35,7 @@ class SalesController extends dbConnector
         return $this->ReturnAssocArray($queryStatement);
     }
 
+    //Uses aggregate SUM sql function to see total tickets ordered
     public function GetTotalTicketsQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT SUM(TicketsOrdered) FROM orders WHERE orders.OrderStatus = 'Completed' AND OrderDate >= ? AND OrderDate <= ?;");
@@ -40,7 +44,8 @@ class SalesController extends dbConnector
         return $this->ReturnAssocArray($queryStatement);
         
     }
-
+    
+    //Uses COUNT to see total number of orders. Also includes orders that have been refunded
     public function GetTotalOrdersQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT COUNT(OrderID) FROM orders WHERE OrderStatus = 'Completed' AND OrderDate >= ? AND OrderDate <= ?;");
@@ -50,6 +55,7 @@ class SalesController extends dbConnector
         
     }
 
+    // Uses COUNT to see total number of orders, doesn't include refunded orders.
     public function GetTotalOrdersIncQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT COUNT(OrderID) FROM orders WHERE OrderStatus != 'Completed' AND OrderStatus != 'Refunded' AND OrderDate >= ? AND OrderDate <= ?;");
@@ -58,6 +64,7 @@ class SalesController extends dbConnector
         return $this->ReturnAssocArray($queryStatement);
     }
 
+    // Uses COUNT to get total users.
     public function GetTotalUsersQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT COUNT(userID) FROM `userlogins` WHERE userDateOfCreation >= ? AND userDateOfCreation <= ?;");
@@ -67,6 +74,7 @@ class SalesController extends dbConnector
         
     }
 
+    // Uses count to get total number of refunded orders.
     public function GetTotalRefundedQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT COUNT(OrderID) FROM orders WHERE OrderStatus = 'Refunded' AND OrderDate >= ? AND OrderDate <= ?;");
@@ -76,6 +84,7 @@ class SalesController extends dbConnector
         
     }
 
+    //Uses AVG to get the average amount of tickets ordered per transaction. Truncates it to 2dp
     public function GetAvgTicketsPerOrderQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT TRUNCATE(AVG(TicketsOrdered), 2) FROM orders WHERE OrderStatus = 'Completed' AND OrderDate >= ? AND OrderDate <= ?;");
@@ -85,6 +94,7 @@ class SalesController extends dbConnector
         
     }
 
+    //Gets the average ticket price set by the admin for events.
     public function GetAvgTicketPriceQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT TRUNCATE(AVG(TicketPrice),2) FROM `tickets` WHERE TicketCreationTime >= ? AND TicketCreationTime <= ?;");
@@ -93,7 +103,8 @@ class SalesController extends dbConnector
         return $this->ReturnAssocArray($queryStatement);
         
     }
-
+    
+    //Checks if any of the aggregate SQL functions returns as null (aka 0 responses) and sets it as 0 instead to avoid errors
     public function SalesDataAllTime()
     {
         $userArray = $this->GetTotalRevenueQuery();
@@ -147,14 +158,18 @@ class SalesController extends dbConnector
     }
 }
 
+//Gets information for all orders for MyOrders.php
 class OrderController extends dbConnector
 {
+
+    //Looks at all of the orders, and gets the useful information from all of them, and sorts them by order date from most recent.
     public function GetAllOrderDataQuery()
     {
-        $queryStatement = $this->connectTodb()->prepare("SELECT orders.OrderID, event.EventName,tickets.TicketName, orders.TicketsOrdered, orders.TotalPrice, orders.OrderDate, cardholderdetails.cardholderFirstname, cardholderdetails.cardholderLastname, cardholderdetails.cardholderEmail, cardholderdetails.cardholderMobileNumber, orders.OrderStatus FROM orders,event,ticketsinevent,tickets, cardholderdetails WHERE orders.CardholderID = cardholderdetails.cardholderID AND orders.TicketTypeID = ticketsinevent.TicketsEventID AND ticketsinevent.EventID = event.EventID AND ticketsinevent.TicketTypeID = tickets.TicketTypeID ORDER BY `orders`.`OrderDate` DESC");
+        $queryStatement = $this->connectTodb()->prepare("SELECT orders.OrderID, event.EventName,tickets.TicketName, orders.TicketsOrdered, orders.TotalPrice, orders.OrderDate, cardholderdetails.cardholderFirstname, cardholderdetails.cardholderLastname, cardholderdetails.cardholderEmail, cardholderdetails.cardholderMobileNumber, orders.OrderStatus FROM orders, event, tickets, cardholderdetails WHERE orders.CardholderID = cardholderdetails.cardholderID AND orders.TicketTypeID = tickets.TicketTypeID AND tickets.EventID = event.EventID ORDER BY `orders`.`OrderDate` DESC;");
         return $queryStatement;
     }
 
+    //Modified ReturnAssocArray function that returns the keys and array in another array.
     public function ReturnAssocArray($queryStatement)
     {
         $queryStatement->execute();
@@ -194,7 +209,7 @@ class OrderController extends dbConnector
 
 }
 
-
+//Gets information for all events for MyEvents.php
 class EventsController extends dbConnector
 {
     public function ReturnAssocArray($queryStatement)
@@ -297,7 +312,7 @@ class EventsController extends dbConnector
 }
 
 
-
+//Special class for if the client requested for the data to be filtered through custom dates.
 class CustomEventsDates extends dbConnector
 {
     // initialising attributes
@@ -310,6 +325,7 @@ class CustomEventsDates extends dbConnector
         $this->endDate = $endDate;
     }
 
+    //Gets all useful events data for custom dates.
     protected function GetCDEventsDataQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT *, DAY(EventStartTime), MONTHNAME(EventStartTime), TIME(EventStartTime) FROM event, venue WHERE event.VenueID = venue.VenueID AND event.EventStartTime > ? AND event.EventStartTime < ? ORDER BY event.EventStartTime ASC;");

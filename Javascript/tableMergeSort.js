@@ -144,7 +144,7 @@ class mergeSort {
             let temp = this.getRows()[element].getElementsByTagName("TD")[0]
             idList.push(temp.parentNode)
         });
-        // Goes through the idList and appends them. Appending brings the value to the bottom of the stack so once all of the data has been appended it will be in the right oder
+        // Goes through the idList and appends them. Appending brings the value to the bottom of the table so once all of the data has been appended it will be in the right oder
         idList.forEach(element => {
             element.parentNode.appendChild(element)
         });
@@ -160,10 +160,3 @@ export class initiateSort {
         newSort.reorderElements(sortColumn);
     }
 }
-
-
-
-
-
-
-

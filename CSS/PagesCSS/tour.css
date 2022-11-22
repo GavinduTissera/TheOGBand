@@ -1,0 +1,191 @@
+
+.MyEventsSection {
+    position: relative;
+    top: 50px;
+}
+
+.MyEventsSection .MyEventsText {
+    font-family: MontHeavy;
+    font-size: 70px;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.MyEventsSection .MyEventsTable {
+    width: 1100px;
+    background-color: var(--lightGreyBlue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.483);
+    
+}
+
+.MyEventsSection .EventsTableRow {
+    background-color: var(--darkGrey);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    width: 1000px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.DayAndMonthBox {
+    background-color: var(--lightGrey);
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+}
+
+.EventMonth, .EventDay {
+    font-family: MontHeavy;
+}
+
+.EventMonth {
+    font-size: 20px;
+}
+
+.EventDay {
+    font-size: 40px;
+}
+
+.RestOfEventContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.TimeAndCity {
+    position: absolute;
+    left: 580px;
+}
+
+.EventTime, .EventVenueNameCity {
+    width: 300px;
+    text-align: right;
+    margin: 5px;
+}
+
+.uil {
+    padding-right: 5px;
+}
+
+.EventName {
+    font-family: Futura;
+    font-weight: 1000;
+    letter-spacing: 1px;
+    font-size: 30px;
+    margin: 20px;
+}
+
+.EventMoreDetails, .ViewTicketPage {
+    font-family: Futura;
+    letter-spacing: 1px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 50px;
+}
+
+.ViewTicketPageText {
+    font-size: 20px;
+}
+
+.TimeAndCity {
+    margin-right: 30px;
+}
+
+.Buttons {
+    position: absolute;
+    left: 900px;
+}
+
+.MoreDetailsButton, .ViewTicketPageButton {
+    margin: 10px;
+}
+
+.ViewTicketPage {
+    cursor: pointer;
+    font-family: Futura;
+    letter-spacing: 1px;
+    font-weight: 600;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px 25px;
+    margin-top: 20px;
+    background-image: linear-gradient(
+        45deg, 
+        #fff 0%,
+        #fff 25%,
+        #ed6ea0,
+        #ec8c69 
+    );
+    background-size: 340%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    animation: forwardsButton 1s ease-in-out 0s forwards;
+}
+
+.ViewTicketPageText {
+    font-family: MontHeavy;
+    font-weight: 700;
+    background-image: linear-gradient(
+        45deg, 
+        #ed6ea0 25%,
+        #ec8c69 55%,
+        #fff 20%
+    );
+    background-size: 340%;
+    background-repeat: no-repeat;
+    background-position: top right;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    animation: forwardsButton 1s ease-in-out 0s forwards;
+}
+
+.ViewTicketPage:hover .ViewTicketPageText, .ViewTicketPage:hover{
+    animation: backwardsButton 1s ease-in-out 0s forwards;
+}
+
+@keyframes forwardsButton {
+    0% {
+        background-position: top left;
+    }
+    100% {
+        background-position: top right;
+    }
+}
+
+@keyframes backwardsButton {
+    0% {
+        background-position: top right;
+    }
+    100% {
+        background-position: top left;
+    }
+}
+
+button:disabled {
+    filter: contrast(50%);
+}

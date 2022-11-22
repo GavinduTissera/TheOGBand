@@ -17,14 +17,14 @@ if ($_SESSION["userisadmin"] === 1) {
     
     //Checks if the button to hide past, future of custom dates of events have been clicked. If they have then it updates the session variable, and then redirects them back to the main file
     if(isset($_POST["SALcheckbox"])) {
-            // Since this is always going to show all events when clicked, it cannot be turned off hence the lack of if statement
-            $_SESSION["ShowAllEvents"] = true;
-            //Only 1 button can be selected at a time so the rest of the buttons return as false
-            $_SESSION["HideFutureEvents"] = false;
-            $_SESSION["HidePastEvents"] = false;
-            $_SESSION["ShowCustomEvents"] = false;
-            $eventsData->GetFullEventsDataFromDB();
-            $_SESSION["UpdateEventsTable"] = true;
+        // Since this is always going to show all events when clicked, it cannot be turned off hence the lack of if statement
+        $_SESSION["ShowAllEvents"] = true;
+        //Only 1 button can be selected at a time so the rest of the buttons return as false
+        $_SESSION["HideFutureEvents"] = false;
+        $_SESSION["HidePastEvents"] = false;
+        $_SESSION["ShowCustomEvents"] = false;
+        $eventsData->GetFullEventsDataFromDB();
+        $_SESSION["UpdateEventsTable"] = true;
         header("location: ../../Pages/Admin/MyEvents.php");
     }
 

@@ -65,6 +65,7 @@
     </header>
 
     <main>
+        <!-- The progress bar visible at the top with the 4 stages. -->
         <div class="ProgressBar">
             <ul class="ProgressList">
                 <div class="TopBar">
@@ -98,6 +99,7 @@
                 <form action="../../../Assets/Includes/createEventInc.php" method="post">
                     <h3 class="shortDescription"> Do you want to...</h3>
                     <div class="SelectOption">
+                        <!-- Choosing between adding a new venue and searching for and selecting an existing one -->
                         <div class="AddNewVenue Option">
                             <button type="button" id="AddNewVenueButton" class="AddNewVenue Button deselected">
                                 ADD NEW VENUE
@@ -110,8 +112,10 @@
                             </button>
                         </div>
                     </div>
+                    <!-- If add new venue is chosen, then these elements are displayed -->
                     <div class="AddNewVenueContent hide" id="AddNewVenue">
                         <div class="OneLineSubmission">
+                            <!-- Error messages -->
                             <h4 class="errorMessage hide" id="errorMessage">The place you searched for doesn't exist</h4>
                             <label for="addressInput" class="FormText">
                                 <h4 class="VenueAddressName">What is the address of your venue?</h4>
@@ -128,9 +132,9 @@
                                 <input type="text" name="nameInput" id="VenueNameInput" class="VenueNameInput" value="" placeholder="Enter a name" required>
                             </div>
                             <div class="SeperatorBar"></div>
-                            <div class="OneLineSubmission half">
+                            <div class="OneLineSubmission half submissionTwo">
                                 <label for="MaxCapacityInput" class="FormText">
-                                    <h4 class="MaxCapacity">What is the capacity of your venue?</h4>
+                                    <h4 class="MaxCapacity">Maximum amount of tickets you can sell?</h4>
                                     <h6 class="requiredStar">*</h6>
                                 </label>
                                 <input type="number" name="MaxCapacity" id="MaxCapacityInput" class="MaxCapacityInput" value="" placeholder="Enter a number" required>
@@ -142,9 +146,11 @@
                             <span id="place-name" class="placeName title"></span><br>
                             <span id="place-address" class="placeAddress "></span>
                         </div>
+                        <!-- Database data that is hidden from the user. It contains latitude/longitude data which is autofilled when the place is searched for -->
                         <div class="DatabaseData hide">
                             <input type="text" name="locationData" id="locationData" class="locationData" value="" required>
                         </div>
+                        <!-- The submit buttons for page 3 have different names, so when submitted do different things according to what the data is.  -->
                         <button class="SubmitButton" id="SubmitButton" type="submit" name="submitPageThreeAddNew">
                             <span class="submitting">
                                 SUBMIT
@@ -153,10 +159,13 @@
                     </div>
                 </form>
                 <form action="../../../Assets/Includes/createEventInc.php" method="post">
+                    <!-- If use existing venue option is chosen then these elements are displayed -->
                     <div class="UseExistingVenueContent One hide" id="UseExistingVenue">
                         <div class="OneLineSubmission">
+                            <!-- Error message -->
                             <h4 class="errorMessage hide" id="errorMessage">The place you searched for doesn't exist. Try to add a new venue.</h4>
                             <label for="VenueNameInputSearch" class="FormText">
+                                <!-- Searches for a venue name, every input button gets a refresh -->
                                 <h4 class="VenueAddressName">Enter a venue name, and click on a venue from the dropdown to show more information</h4>
                             </label>
                             <input type="text" name="VenueNameInputSearch" id="VenueNameInputSearch" class="VenueNameInputSearch" placeholder="Venue name">
@@ -195,15 +204,18 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th id="VenueIDOutput"></th>
-                                        <th id="VenueNameOutput"></th>
-                                        <th id="VenueAddressOutput"></th>
-                                        <th id="VenueMaxCapacityOutput"></th>
+                                        <!-- Javascript fills out the table data -->
+                                        <td id="VenueIDOutput"></td>
+                                        <td id="VenueNameOutput"></td>
+                                        <td id="VenueAddressOutput"></td>
+                                        <td id="VenueMaxCapacityOutput"></td>
                                     </tr>
                                 </thead>
                             </table>
                         </div>
+
                         <div class="DatabaseData hide">
+                        <!-- Database data that is hidden from the user. It contains the venueID which is autofilled when the place is searched for -->
                             <input type="text" name="venueID" id="venueID" class="venueID" value="" required>
                         </div>
                         <button class="SubmitButton hide" id="SubmitButtonTwo" type="submit" name="submitPageThreeUseExisting">
@@ -227,9 +239,9 @@
     </main>
     <!-- This script introduces the google maps api with places library enabled -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEC7ZFii8nU71mliEGeU8YhoclN8eoJgs&callback=initMap&libraries=places" defer></script>
-    <script src="../../../Javascript/displayVenueOnClick.js"></script>
-    <script src="../../../Javascript/CreateConcertButtons.js"></script>
-    <script src="../../../Javascript/listLinearSearch.js"></script>
+    <script src="../../../Javascript/displayVenueOnClick.js" async defer></script>
+    <script src="../../../Javascript/CreateConcertButtons.js"async defer></script>
+    <script src="../../../Javascript/listLinearSearch.js"async="false" defer></script>
     
 </body>
 </html>

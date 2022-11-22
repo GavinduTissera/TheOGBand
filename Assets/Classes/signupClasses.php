@@ -14,6 +14,7 @@ class SignupQuery extends dbConnector
         return $queryStatement;
     }
 
+    //Gets the record from the database for an email that matches the one given
     protected function GetAllDataQuery()
     {
         $queryStatement = $this->connectTodb()->prepare("SELECT * FROM userLogins WHERE userEmail = ?;");
@@ -26,6 +27,7 @@ class SignupQuery extends dbConnector
     {
         try {
             $queryStatement = $this->addUserToDBQuery();
+            //Hashes the password and stores it in the database. The hashed password is always 60 characters long.
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             $queryStatement->execute([$email, $firstname, $hashedPassword, $isAdmin]);
         //Checks if the email already exists and if it does, outputs a userAlreadyExists redirect
@@ -35,6 +37,7 @@ class SignupQuery extends dbConnector
                 header("location: ../../Pages/login.php?error=userAlreadyExists");
                 exit();
             }
+            //If there is a server or database error then a redirect with failedToExecutre happens.
             $queryStatement = null;
             header("location: ../../Pages/login.php?error=failedToExcecute");
             exit();
@@ -65,7 +68,7 @@ class SignupController extends SignupQuery {
 
     // === ERROR HANDLING ===
 
-    //If the password and repeat password don't match then it sends it to errorHandling() to give an error message
+    //If the password and repeat password don't match then it sends it to errorHandlingAndSignup() to give an error message
     private function passwordMatchCheck()
     {
         if ($this->password !== $this->repeatPassword) {
@@ -80,17 +83,18 @@ class SignupController extends SignupQuery {
             header("location: ../../Pages/login.php?error=passwordsDontMatch");
             exit();
         } 
+        //Adds the user to the database, and gets the data from it.
         $this->addUserToDB($this->email, $this->firstname, $this->password, $this->isAdmin); 
         $queryStatement = $this->GetAllDataQuery($this->email);
         $queryStatement->execute([$this->email]);
         $getArray = new CreateArrayCheckQuery();
+        //Creates an associative array, and saves the details in session variables
         $userArray = $getArray->GetAssocArray($queryStatement);
         
         session_start();
         $_SESSION["userid"] = $userArray[0]["userID"];
         $_SESSION["useremail"] = $userArray[0]["userEmail"];
         $_SESSION["userfirstname"] = $userArray[0]["userFirstName"];
-        $_SESSION["userpassword"] = $userArray[0]["userPassword"];
         $_SESSION["userisadmin"] = $userArray[0]["userIsAdmin"];
         
     }

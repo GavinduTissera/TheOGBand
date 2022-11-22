@@ -24,11 +24,15 @@ main {
     
 }
 
+body {
+    padding: 0;
+}
+
 /* === LOGIN STYLING START === */
 
 /* Styling the background image and adding blur and reduced brightness for ease of reading */
 .BackgroundImage {
-    width: 100vw;
+    width: 110vw;
     height: 100vh;
     position: relative;
     background-image: url(../../Images/BestBandPictures/fullband.png);
@@ -48,12 +52,12 @@ main {
     align-items: center;
     position:absolute;
     font-size: 30px;
-    top: 20%;
+    top: 25%;
     left: 18%;
 }
 
 .SignupContainer {
-    top: 11.5%;
+    top: 16.5%;
 }
 
 /* Google logo styling */
@@ -103,6 +107,7 @@ main {
 .GoogleSignInText:hover, .GoogleSignupText:hover {
     color: #fff;
 }
+
 
 /* Styling of email login divider */
 .EmailLogin, .EmailSignup {
@@ -273,12 +278,17 @@ main {
     visibility: hidden;
 }
 
+/* Styling of error messages */
+
+.errorMessages h2 {
+    color: red;
+    font-family: Montserrat;
+    font-size: 18px;
+    text-align: center;
+    line-height: 20px;
+    display: none;
+}
+
+
 
 /* === LOGIN STYLING END === */
-
-
-/* === ERROR HANDLING START === */
-
-
-
-/* === ERROR HANDLING END === */

@@ -223,11 +223,16 @@ textarea {
 
 .OneLineSubmission.submissionOne {
     position: relative;
-    left: -140px;
+    left: -120px;
 }
 
 .OneLineSubmission.submissionOne input {
     width: 120%;
+}
+
+.OneLineSubmission.submissionTwo {
+    position: relative;
+    left: 20px;
 }
 
 

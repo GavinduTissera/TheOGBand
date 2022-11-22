@@ -1,4 +1,6 @@
 // Getting the data from the form and putting it in a javascript object
+
+//Setting constants of elements
 const form = document.querySelector(".AddNewTicketForm")
 const SubmitButton = document.querySelector(".SubmitTicket")
 const NoneCreatedAlert = document.querySelector(".NoneCreatedAlert")
@@ -8,37 +10,34 @@ const SubmitForm = document.querySelector(".SubmitButton")
 const errorMessage = document.getElementById("errorMessageTwo")
 const nameErrorMessage = document.getElementById("errorMessageName")
 const DatabaseDataInput = document.querySelector(".TicketObjects")
+const CreatedTicketsHeader = document.querySelector(".CreatedTicketsHeader")
 var CopyTickets = document.querySelectorAll(".CopyTicket")
 var DeleteTickets = document.querySelectorAll(".DeleteTicket")
 
+//Setting the total amount of tickets that can be sold into the header
+//Getting Capacity from the URL
+let params = new URLSearchParams(location.search)
+var Capacity = params.get("Capacity")
+CreatedTicketsHeader.innerHTML = "TOTAL CAPACITY: " + Capacity
+
 //Putting a count to see how many tickets have been created
 var count = 0
-var ticketCapacity = 0
+var TotalTicketsUsed = 0
 var value = Object
 var TicketArray = []
 console.log(SubmitButton)
 console.log(TicketArray)
 form.addEventListener("submit", function(event) {
-    //Stops the form from submitting if there are no tickets
+    //Stops the form from submitting if there are no tickets and displays an error message
     if (count == 0) {
         event.stopImmediatePropagation()
         event.preventDefault()
         errorMessage.classList.replace("hide", "show")
     }
+    //Sets the invisible databasedata input to the JSON text representing the tickets
     DatabaseDataInput.setAttribute("value", JSON.stringify(TicketArray))
-    // const xmlhttp = new XMLHttpRequest();
-    // xmlhttp.open("POST", "../Assets/Includes/createEventInc.php", true);
-    // xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
-    // xmlhttp.onreadystatechange = function() {
-    //     //Used to check if errors exist
-    //     if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-    //         var xmlResponse = JSON.parse(xmlhttp.response);
-    //         alert(xmlResponse);
-    //     }
-    // }
-    // xmlhttp.send(JSON.stringify(TicketArray))
 })
-//Checking to see if the form has been submitted
+//Checking to see if the Add ticket button has been pressed
 SubmitButton.addEventListener("click", function() {
     //Getting the form data and putting it in a javscript object called value
     const formData = new FormData(document.querySelector(".AddNewTicketForm"))
@@ -52,7 +51,9 @@ SubmitButton.addEventListener("click", function() {
         nameErrorMessage.classList.replace("show", "hide")
         TicketHeaders.classList.replace("hide", "show")
         SubmitForm.classList.replace("hide", "show")
+        //Adds an element to the table above the  form
         CreateListElement(value)
+        //Updates the copytickets and deletetickets queryselectors
         CopyTickets = document.querySelectorAll(".CopyTicket")
         DeleteTickets = document.querySelectorAll(".DeleteTicket")
         console.log(value)
@@ -165,9 +166,7 @@ function CreateListElement(value) {
             }
         } 
     })
+    //Appends the liElement to the ActiveTicketsList
     ActiveTicketsList.appendChild(liElement)
-
-
-
 
 }

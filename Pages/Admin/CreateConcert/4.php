@@ -6,6 +6,7 @@
         header("location: ../../../Pages/login.php?error=InvalidPermissions");
     }
     include "../../../Assets/Includes/adminDashboardInc.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +65,7 @@
     </header>
 
     <main>
+        <!-- The progress bar visible at the top with the 4 stages. -->
         <div class="ProgressBar">
             <ul class="ProgressList">
                 <div class="TopBar">
@@ -95,7 +97,7 @@
         <div class="MainForm">
             <div class="FormInformation">
                 <h3 class="shortDescription">Create your ticket types here</h3>
-                <h3 class="CreatedTicketsHeader">TICKETS IN THIS EVENT</h3>
+                <h3 class="CreatedTicketsHeader"></h3>
                 <div class="ActiveTicketsTable">
                     <h4 class="NoneCreatedAlert show">No tickets have been made yet. <br> Press the Add Tickets button to create a ticket type</h4>
                     <div class="TicketHeaders hide">
@@ -105,6 +107,7 @@
                         <h4 class="TicketPrice">Price</h4>
                         <h4 class="Actions">Actions</h4>
                     </div>
+                    <!-- The ticket types that have been created will go here. Javascript will add them in. -->
                     <ul class="ActiveTickets">
                         
                     </ul>
@@ -115,6 +118,7 @@
                 <div class="CreateTicketType">
                     <form class="AddNewTicketForm" action="../../../Assets/Includes/createEventInc.php" method="post">
                         <div class="OneLineSubmission">
+                            <!-- Error messages -->
                             <h4 class="errorMessage hide" id="errorMessage">There is an error somewhere in your submission.</h4>
                             <h4 class="errorMessage hide" id="errorMessageTwo">Make sure to create at least 1 ticket type before submitting the form.<br> Click the add ticket button to add a ticket type.</h4>
                             <h4 class="errorMessage hide" id="errorMessageName">Make sure that your ticket has a name.</h4>
@@ -175,6 +179,7 @@
                                 ADD TICKET
                             </button>
                         </div>
+                        <!-- Database data that is hidden from the user. It contains the ticket object data which is autoupdated every time a ticket is added -->
                         <div class="DatabaseData hide">
                             <input type="text" name="TicketObjects" id="TicketObjects" class="TicketObjects" value="">
                         </div>

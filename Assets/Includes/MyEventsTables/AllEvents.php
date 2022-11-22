@@ -1,4 +1,5 @@
 <?php
+//Iterates through the amount of events and adds a new table row for every event it has data for. Also adds the table data in the right rows.
     if ($_SESSION["Events.AllTotalEvents"] > 0) {
         for ($i=0; $i < $_SESSION["Events.AllTotalEvents"]; $i++) {
             ?>

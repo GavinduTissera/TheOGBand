@@ -64,6 +64,7 @@
     </header>
 
     <main>
+        <!-- The progress bar visible at the top with the 4 stages. -->
         <div class="ProgressBar">
             <ul class="ProgressList">
                 <div class="TopBar">
@@ -96,6 +97,7 @@
             <form action="../../../Assets/Includes/createEventInc.php" method="post">
                 <div class="FormInformation">
                     <h3 class="shortDescription"> Set the time and date of your concert</h3>
+                    <h4 class="EndDateAfter" id="errorMessage">Your end date is after your start date.</h4>
                     <div class="DateTimeSubmission">
                         <div class="DateTimeOne">
                             <div class="DateSubmission">
@@ -182,6 +184,18 @@
         });
 
         
+    </script>
+    <script>
+        // === ERROR MESSAGES ===
+        //Getting the locations of the error messages in the php files
+        var EndDateAfter = document.querySelector(".EndDateAfter")
+        //Getting the error information from the URL
+        let params = new URLSearchParams(location.search)
+        var errorMsg = params.get("error")
+        //Showing the correct error message if an error did occur
+        if (errorMsg == "EndDateAfter") {
+            EndDateAfter.style.display = "flex"
+        }
     </script>
 </body>
 </html>

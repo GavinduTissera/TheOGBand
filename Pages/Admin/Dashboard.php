@@ -2,10 +2,11 @@
     include "../../Assets/Classes/dbConnectorClasses.php";
     
     session_start();
-    // Doesn't allow non admins by checking in the database if they are admin
+    // Doesn't allow non admins by checking in the database if they are admin. If the account is not admin, then the user gets redirected to the login page with an error message
     if ($_SESSION["userisadmin"] !== 1) {
         header("location: ../../Pages/login.php?error=InvalidPermissions");
     }
+    //When the page is loaded, defaults to showAllEvents = true
     if (!isset($_SESSION["ShowAllEvents"])) {
         $_SESSION["ShowAllEvents"] = true;
         $_SESSION["HidePastEvents"] = false;
@@ -262,6 +263,7 @@
                 <!-- displays information for event 1 -->
                 <?php
                 for ($i=0; $i < 5; $i++) { 
+                    // Only displays the column if the event actually exists (for example only displays event 4 if there are 4 events to display)
                     if (isset($_SESSION["Events-EventMonth".$i])) {
                         ?>
                         <div class="EventsTableRow">
@@ -301,16 +303,8 @@
                                 </div>
                                 <!-- buttons are used to redirect to the event page and event  -->
                                 <div class="Buttons">
-                                    <div class="MoreDetailsButton">
-                                        <a href="EDITTHISLATER.php">
-                                            <button class="EventMoreDetails">
-                                                <i class="uil uil-ellipsis-h"></i>
-                                                MORE DETAILS
-                                            </button>
-                                        </a>  
-                                    </div>
                                     <div class="ViewTicketPageButton">
-                                        <a href="EDITTHISLATER.php">
+                                        <a href="../tickets.php?id=<?php echo $_SESSION["Events.EventID".$i]?>">
                                             <button class="ViewTicketPage">
                                                 <i class="uil uil-external-link-alt"></i>
                                                 VIEW TICKET PAGE

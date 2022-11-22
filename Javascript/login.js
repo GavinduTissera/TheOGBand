@@ -45,3 +45,28 @@ SignupButton.addEventListener("click", () => {
     SignupForm.classList.add("show")
 });
 
+// === ERROR MESSAGES ===
+//Getting the locations of the error messages in the php files
+var incorrectPassword = document.querySelector(".incorrectPassword")
+var userNotExists = document.querySelector(".userNotExists")
+var userAlreadyExists = document.querySelector(".userAlreadyExists")
+var failedToExcecute = document.querySelector(".failedToExcecute")
+var passwordsDontMatch = document.querySelector(".passwordsDontMatch")
+var InvalidPermissions = document.querySelector(".InvalidPermissions")
+//Getting the error information from the URL
+let params = new URLSearchParams(location.search)
+var errorMsg = params.get("error")
+//Showing the correct error message if an error did occur
+if (errorMsg == "incorrectPassword") {
+    incorrectPassword.style.display = "flex"
+} else if (errorMsg == "userNotExists") {
+    userNotExists.style.display = "flex"
+} else if (errorMsg == "userAlreadyExists") {
+    userAlreadyExists.style.display = "flex"
+} else if (errorMsg == "failedToExcecute") {
+    failedToExcecute.style.display = "flex"
+} else if (errorMsg == "passwordsDontMatch") {
+    passwordsDontMatch.style.display = "flex"
+} else if (errorMsg == "InvalidPermissions") {
+    InvalidPermissions.style.display = "flex"
+}

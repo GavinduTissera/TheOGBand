@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/PagesCSS/login.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <!-- === Link to Google API Javascript library === -->
-    <script src="https://apis.google.com/js/api.js"></script>
     <!--Document title-->
     <title>Login - The OG Band</title>
 </head>
@@ -48,12 +46,19 @@
                 <div class="LoginBox">
                     <h2 class="LoginText">LOGIN</h2>
                     <div class="LoginWithGoogle">
-                        <div class="GoogleLoginButton">
-                            <a href=""><img class="GoogleIcon" src="../Images/Icons/GoogleLogo.png" alt="Google Logo"><p class="GoogleSignInText">Sign In With Google</p></a>
+                        <div class="errorMessages">
+                            <!-- Error messages that show if the error comes up in the url-->
+                            <h2 class="incorrectPassword">Your password is incorrect<br>Please try again</h2>
+                            <h2 class="userNotExists">This email cannot be found<br>Please try another</h2>
+                            <h2 class="userAlreadyExists">This user already exists<br>Please log in instead</h2>
+                            <h2 class="failedToExcecute">The server had an error<br>Please try again later</h2>
+                            <h2 class="passwordsDontMatch">The passwords don't match<br>Please try again</h2>
+                            <h2 class="InvalidPermissions">Your account doesn't have permission to access that<br> <br>Please try another account</h2>
                         </div>
-                        
-                        <p class="EmailLogin">Or Login with E-Mail</p>
+                        <!-- Login with google was an option here, but ended up being removed due to unnecessary complexity -->
+                        <p class="EmailLogin">Login with E-Mail</p>
                     </div>
+                    <!-- When the form is submitted, the form information goes to loginInc.php -->
                     <form action="../Assets/Includes/loginInc.php" method="post">
                         <div class="Input Email">
                             <i class="uil uil-envelope-alt"></i>
@@ -89,12 +94,11 @@
                 <div class="SignupBox">
                     <h2 class="SignupText">SIGN UP</h2>
                     <div class="SignupWithGoogle">
-                        <div class="GoogleSignupButton">
-                            <a href=""><img class="GoogleIcon" src="../Images/Icons/GoogleLogo.png" alt="Google Logo"><p class="GoogleSignInText">Sign Up With Google</p></a>
-                        </div>
-                        
-                        <p class="EmailSignup">Or Sign up with E-Mail</p>
+                        <div class="errorMessages">
+                        </div>  
+                        <p class="EmailSignup">Sign up with E-Mail</p>
                     </div>
+                    <!-- When the form is submitted, the form information goes to signupInc.php -->
                     <form action="../Assets/Includes/signupInc.php" method="post">
                         <div class="Input Email">
                             <i class="uil uil-envelope-alt"></i>

@@ -6,6 +6,7 @@
         header("location: ../../../Pages/login.php?error=InvalidPermissions");
     }
     include "../../../Assets/Includes/adminDashboardInc.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="../../../CSS/reset.css">
     <link rel="stylesheet" href="../../../CSS/styles.css">
     <link rel="stylesheet" href="../../../CSS/PagesCSS/createconcert.css">
-    <link rel="stylesheet" href="../../../CSS/PagesCSS/createConcertPages/concert1.css">
+    <link rel="stylesheet" href="../../../CSS/PagesCSS/createConcertPages/finished.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <script src="https://kit.fontawesome.com/62b71b12cb.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -64,25 +65,24 @@
     </header>
 
     <main>
-        <!-- The progress bar visible at the top with the 4 stages. -->
         <div class="ProgressBar">
             <ul class="ProgressList">
                 <div class="TopBar">
                     <li><a href="1.php" class="SideBarOverview One">
-                        <i class="fa-solid fa-1"></i>
+                        <i class="fa-solid fa-check"></i>
                         <h4 class="ProgressBarText Basics">EVENT BASICS</h4>
                     </a></li>
                     <li><a href="2.php" class="SideBarOverview Two">
-                        <i class="fa-solid fa-2"></i>
-                        <h4 class="ProgressBarText Basics">DATE AND TIME</h4>
+                        <i class="fa-solid fa-check"></i>
+                        <h4 class="ProgressBarText DateTime">DATE AND TIME</h4>
                     </a></li>
                     <li><a href="3.php" class="SideBarOverview Three">
-                        <i class="fa-solid fa-3"></i>
-                        <h4 class="ProgressBarText Basics">LOCATION</h4>
+                        <i class="fa-solid fa-check"></i>
+                        <h4 class="ProgressBarText Location">LOCATION</h4>
                     </a></li>
                     <li><a href="4.php" class="SideBarOverview Four">
-                        <i class="fa-solid fa-4"></i>
-                        <h4 class="ProgressBarText Basics">TICKETS</h4>
+                        <i class="fa-solid fa-check"></i>
+                        <h4 class="ProgressBarText Tickets">TICKETS</h4>
                     </a></li>
                 </div>
             </ul>
@@ -91,53 +91,27 @@
             </div>
         </div>
 
-        <!-- MAIN CONTENT -->
-        <h2 class="CreateConcertTitle">EVENT BASICS</h1>
-        <div class="MainForm">
-            <form action="../../../Assets/Includes/createEventInc.php" method="post">
-                <div class="FormInformation">
-                    <h3 class="shortDescription"> Set the name and description of your concert</h3>
-                    <div class="OneLineSubmission">
-                        <label for="ConcertNameInput" class="FormText">
-                            <h4 class="ConcertName">What is the name of your concert? </h4>
-                            <h6 class="requiredStar">*</h6>
-                        </label>
-                        <input type="text" name="ConcertNameInput" id="ConcertNameInput" value="<?php
-                        if(isset($_SESSION["TempConcertName"])){
-                            echo $_SESSION["TempConcertName"]; 
-                        };?>" required>
-                    </div>
-                    <div class="LongTextSubmission ">
-                        <label for="ConcertDescriptionInput" class="FormText">
-                            <h4 class="ConcertDescription">
-                                <div class="tooltip">
-                                    Give a description of your concert. 
-                                    <h5 class="Tooltiptext">This information will be shown to users on the events screen</h5>
-                                </div>
-                            </h4>
-                            <h6 class="requiredStar">*</h6>
-                        </label>
-                        <textarea name="ConcertDescriptionInput" id="ConcertDescriptionInput" cols="130" rows="5" required><?php
-                        if(isset($_SESSION["TempConcertDescription"])){
-                            echo $_SESSION["TempConcertDescription"]; 
-                        };?></textarea>
-                    </div>
-                    <button class="SubmitButton" type="submit" name="submitPageOne">
-                        <span class="submitting">
-                            SUBMIT
-                        </span>  
-                    </button>
-                    <div class="BottomText">
-                        <div class="FormText">
-                            <h6 class="requiredStar">* </h6>
-                            <h5 class="SmallText"> - Required</h6>
-                        </div> <br>
-                        <h5 class="SmallText FormText">New events are automatically set as unlisted until made public in the events menu</h5>
-                    </div>
-                    
-                </div>
-            </form>
+        <div class="FinishedTitle">YOUR EVENT HAS NOW BEEN ADDED</div>
+        <div class="Buttons">
+            <!-- If the user chooses make public, then it makes the event public and redirects back to the dashboard, if the user picks go to dashboard, it redirects straight to the dashboard -->
+            <button class="MakePublicButton"><a href="../../../Assets/Classes/makeEventPublic.php">PRESS TO MAKE YOUR EVENT PUBLIC</a></button>
+            <button class="GoToDashboardButton"><a href="../Dashboard.php"> OR GO BACK TO THE DASHBOARD</a></button>
         </div>
+        <div class="CircleLoader">
+            <div class="Checkmark">
+                <i class="fa-solid fa-check"></i>
+            </div>
+        </div>
+
+
     </main>
+    <script>
+        //Only adds the finished loading class after 4 seconds
+        window.onload = function() {
+            setTimeout(function() {
+                document.querySelector(".CircleLoader").classList.add("FinishedLoading")
+            }, 4000);
+        }
+    </script>
 </body>
 </html>

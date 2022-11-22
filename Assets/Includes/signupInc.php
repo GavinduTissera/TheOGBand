@@ -10,7 +10,7 @@ if(isset($_POST["submit"])) {
     $repeatPassword = $_POST["repeatpassword"];
     $isAdmin = false;
 
-    //Input sanitisation of email and first name
+    //Input sanitisation of email and first name. For example, the name cannot have any characters with an ascii value of higher than 127
 
     $email = filter_var($unsanitisedEmail, FILTER_SANITIZE_EMAIL, FILTER_FLAG_EMAIL_UNICODE);
     $firstname = filter_var($unsanitisedFirstname, FILTER_SANITIZE_ENCODED, FILTER_FLAG_STRIP_HIGH);
@@ -20,11 +20,9 @@ if(isset($_POST["submit"])) {
     include "../Classes/signupClasses.php";
     $newUser = new SignupController($email, $firstname, $password, $repeatPassword, $isAdmin);
     $newUser->errorHandlingAndSignup();
-        header("location: ../../index.php?error=none");
+    header("location: ../../index.php?error=none");
 
 } else {
     //If the user got here by typing the link, it referres them back to the login page if they are a regular user, else referres them to the admin page
     header("location: ../../Pages/login.php");
-    
-    
 }

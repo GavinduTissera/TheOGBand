@@ -1,4 +1,5 @@
 <?php
+    //Allows use of global variables
     include "Assets/Classes/dbConnectorClasses.php";
     session_start()
 ?>
@@ -6,9 +7,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Metadata -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/styles.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
@@ -117,6 +120,7 @@
                 </div>
                 <div class="MusicContent">
                     <h3 class="header Music">MUSIC</h3>
+                    <!-- The 3 spotify playlists. These are embeds directly from spotify's website -->
                     <div class="SpotifyPlaylists">
                         <iframe class="PlaylistOne" title="PlaylistOne" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2k9WGCD9GxTUsdYtIDnZhG?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
                         <iframe class="PlaylistTwo" title="PlaylistTwo" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0E9XMGembJo?utm_source=generator" width="30%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -218,7 +222,7 @@
                 
             </section>
 
-
+            <!-- ====== MAILING LIST SECTION ====== -->
             <section class="MailingList">
                 <div class="TexturedBackground Three"></div>
                 <div class="MailingListContent">
@@ -296,12 +300,10 @@
 		ScrollReveal().reveal('.Gallery', { origin: "right"})
         
 	</script>
-    <!--Loading react.js -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
     <!--Loading script files-->
     <script type="text/javascript" src="Javascript/gallery.js"></script>
     <script type="module">
+        //gets the current date, and stops the date of birth input for the mailing list have values higher than the current date.
         import {GetCurrentDate} from "./Javascript/date.js";
         var today = GetCurrentDate()
         document.getElementById("dateofbirth").setAttribute("max", today);

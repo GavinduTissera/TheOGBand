@@ -109,3 +109,15 @@
 .FormText {
     margin-bottom: 20px;
 }
+
+.EndDateAfter {
+    color: red;
+    position: relative;
+    top: -10px;
+    left: 40px;
+    display: none;
+}
+
+.SubmitButton {
+    top: 280px;
+}

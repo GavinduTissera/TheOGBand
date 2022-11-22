@@ -191,6 +191,7 @@ li {
     background-color: var(--lightGreyBlue);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.421);
     transition: 0.3s;
+    appearance: none;
     -webkit-appearance: none;
 }
   
@@ -344,10 +345,17 @@ li {
     font-size: 40px;
 }
 
-.RestOfEventContent, .EventTime, .EventVenueNameCity {
+.EventTime, .EventVenueNameCity {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
+}
+
+.RestOfEventContent {
+    width: 69%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .EventName {
@@ -358,7 +366,7 @@ li {
     margin: 20px;
 }
 
-.EventMoreDetails, .ViewTicketPage {
+.ViewTicketPage {
     font-family: Futura;
     letter-spacing: 1px;
     font-weight: 400;

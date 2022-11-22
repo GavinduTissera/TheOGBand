@@ -5,12 +5,14 @@ class DisplayInformationOnclick
     #table
     #submitButton
 
+    //Constructor
     constructor() {
         this.#listElements = document.querySelectorAll(".VenueRow")
         this.#table = document.querySelector(".VenueInformationTable")
         this.#submitButton = document.getElementById("SubmitButtonTwo")
     }
 
+    //Getters
     getListElements() {
         return this.#listElements
     }
@@ -23,6 +25,7 @@ class DisplayInformationOnclick
         return this.#submitButton
     }
 
+    //When a list element is clicked, display the table and the submit button.Doesn't remove the shown elements after
     getInformationOnClick() {
         var table = this.getTable()
         var SubmitButton = this.getSubmitButton()
@@ -44,10 +47,11 @@ const Seperators = document.querySelectorAll(".SeperatingBar")
 //When the xmlhttprequest is loaded, it parses the json into object form from a string
 xmlhttp.onload = function() {
     const myObj = JSON.parse(this.responseText);
-    //
+    //The total amount of venues stored in the database
     var totalVenues = myObj.AmountOfVenues
     console.log(totalVenues)
     if (totalVenues > 0) {
+        //Adds a new venue element for the table in UseExistingVenue
         for (let i = 0; i < totalVenues; i++) {
             SeperatingDiv = document.createElement("div")
             SeperatingDiv.classList.add("SeperatingBar", "show")
@@ -64,7 +68,12 @@ xmlhttp.onload = function() {
 
             h5Tag = document.createElement("h5")
             h5Tag.classList.add("VenueNameTwo")
-            h5Content = document.createTextNode(myObj.VenueAddress[i])
+            if (myObj.VenueAddress[i].length > 40) {
+                h5Content = document.createTextNode((myObj.VenueAddress[i]).substring(0,40)+"...")
+            } else {
+                h5Content = document.createTextNode((myObj.VenueAddress[i]))
+            }
+            
             h5Tag.appendChild(h5Content)
 
             ListRow.appendChild(h4Tag)
@@ -72,6 +81,7 @@ xmlhttp.onload = function() {
             VenueList.appendChild(ListRow)
         }        
     }
+    //It then opens up the table and submit button when one of the list elements is clicked
     var information = new DisplayInformationOnclick
     information.getInformationOnClick()
     //Now that the venue rows have been created, it can now be set
@@ -79,9 +89,7 @@ xmlhttp.onload = function() {
     console.log(VenueList)
     // It then iterates through the rows in the table, adding an event listener to each, and then setting the values in the table to what venue was clicked
     VenueRows.forEach((element, index) => {
-        console.log("this should work")
         element.addEventListener("click", function() {
-            console.log("this should alsow rowkr")
             document.getElementById("VenueIDOutput").innerHTML = myObj.VenueID[index];
             document.getElementById("VenueNameOutput").innerHTML = myObj.VenueName[index];
             document.getElementById("VenueAddressOutput").innerHTML = myObj.VenueAddress[index];

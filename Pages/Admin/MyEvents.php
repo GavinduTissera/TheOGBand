@@ -175,6 +175,7 @@
                         <tr class="row1">
                             <th class="ID headerTable none" id="0">
                                 <div class="ColumnID ColumnBox">
+                                    <!-- Tooltips are displayed on hovering over an element. An element can be seen to have a tooltip if it has a dotted line under it -->
                                     <div class="tooltip">
                                         Creation ID
                                         <h5 class="Tooltiptext ToolFirst">This is the unique ID generated when the events are created</h5>
@@ -289,6 +290,7 @@
                     </thead>
                     
                     <?php
+                    //Adds the table on load, then every time the filter is changed, adminDashboardInc sets UpdateEventsTable to true, which then updates the table.
                     include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
                     if ($_SESSION["UpdateEventsTable"] == true) {
                         include_once "../../Assets/Includes/MyEventsTables/AllEvents.php";
@@ -395,10 +397,6 @@
                 icons.classList.replace("notshown", "shown")
             })
         }
-
-        // function putUnsortedIcon(params) {
-            
-        // }
 
     </script>
 </body>
