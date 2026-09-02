@@ -238,7 +238,7 @@
         </div>
     </main>
     <!-- This script introduces the google maps api with places library enabled -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEC7ZFii8nU71mliEGeU8YhoclN8eoJgs&callback=initMap&libraries=places" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=APIKEY&callback=initMap&libraries=places" defer></script>
     <script src="../../../Javascript/displayVenueOnClick.js" async defer></script>
     <script src="../../../Javascript/CreateConcertButtons.js"async defer></script>
     <script src="../../../Javascript/listLinearSearch.js"async="false" defer></script>
